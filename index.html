@@ -79,6 +79,29 @@
             overflow: hidden;
             width: 100%;
         }
+
+        .curriculum-week {
+            border-left: 8px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        .curriculum-week:hover {
+            border-left-width: 16px;
+            background-color: #f0f7ff;
+        }
+        .math-tag { background-color: #fee2e2; color: #dc2626; }
+        .chinese-tag { background-color: #fef3c7; color: #d97706; }
+        .english-tag { background-color: #dcfce7; color: #16a34a; }
+
+        .schedule-card {
+            background: #fff;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-left: 6px solid transparent;
+            transition: transform 0.2s;
+        }
+        .schedule-card:hover { transform: scale(1.02); }
     </style>
 </head>
 <body class="p-4 md:p-8 min-h-screen">
@@ -87,6 +110,7 @@
         <div class="sunburst"></div>
     </div>
 
+    <!-- 懸浮聯繫按鈕 -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
         <a href="https://www.facebook.com/share/1CLd41c9sY/?mibextid=wwXIfr" target="_blank" class="floating-btn bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl border-2 border-white">
             <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -100,8 +124,10 @@
         </a>
     </div>
 
+    <!-- 主要內容區 -->
     <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border-8 border-yellow-400 relative">
         
+        <!-- Header -->
         <div class="bg-red-600 p-8 text-center text-white relative">
             <div class="absolute top-6 left-6 hidden lg:block">
                  <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center border-4 border-yellow-300 shadow-xl overflow-hidden">
@@ -116,6 +142,7 @@
 
         <div class="p-6 md:p-12">
             
+            <!-- 數據分析區 -->
             <div class="mb-16 text-center">
                 <div class="inline-block bg-blue-50 border-l-8 border-blue-500 p-4 mb-8 rounded-r-xl">
                     <p class="text-blue-800 text-xl font-bold">115年 國一曙光新生入學考 數據分析</p>
@@ -142,121 +169,152 @@
                 </div>
             </div>
 
-            <div class="bg-red-50 rounded-3xl p-8 mb-16 border-2 border-dashed border-red-200">
-                <div class="flex flex-col md:flex-row items-center gap-6">
-                    <div class="bg-red-600 text-white px-6 py-4 rounded-2xl font-black text-2xl shrink-0 shadow-lg italic">競爭極度激烈</div>
-                    <div class="text-center md:text-left">
-                        <p class="text-red-700 font-black text-2xl mb-2 underline underline-offset-8">錄取率僅約兩成！您準備好了嗎？</p>
-                        <p class="text-gray-600 text-lg leading-relaxed">加入金名，我們用最精準的課程與最強師資，將您的錄取率提升至最高點！</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 mb-16">
-                <div class="flex items-center gap-5 bg-green-50 p-6 rounded-2xl border-l-8 border-green-500 shadow-sm">
-                    <div class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white font-black text-2xl shadow-md">1</div>
-                    <p class="font-black text-gray-800 text-xl">歷年私中試題深度解析</p>
-                </div>
-                <div class="flex items-center gap-5 bg-blue-50 p-6 rounded-2xl border-l-8 border-blue-500 shadow-sm">
-                    <div class="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center text-white font-black text-2xl shadow-md">2</div>
-                    <p class="font-black text-gray-800 text-xl">名師親授精華重點講義</p>
-                </div>
-                <div class="flex items-center gap-5 bg-orange-50 p-6 rounded-2xl border-l-8 border-orange-500 shadow-sm">
-                    <div class="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center text-white font-black text-2xl shadow-md">3</div>
-                    <p class="font-black text-gray-800 text-xl">考前大規模全真模擬測試</p>
-                </div>
-                <div class="flex items-center gap-5 bg-pink-50 p-6 rounded-2xl border-l-8 border-pink-500 shadow-sm">
-                    <div class="w-14 h-14 bg-pink-500 rounded-full flex items-center justify-center text-white font-black text-2xl shadow-md">4</div>
-                    <p class="font-black text-gray-800 text-xl">個別弱點補強與升學落點</p>
-                </div>
-            </div>
-
-            <!-- 私中特訓班課程時間表 -->
+            <!-- 上課時段概覽 (調整位置至此，並優化視覺樣式) -->
             <div class="mb-20">
                 <div class="text-center mb-10">
-                    <h3 class="text-3xl font-black text-blue-800 inline-block border-b-4 border-yellow-400 pb-2">私中特訓班｜最新上課課表</h3>
-                    <div class="mt-4">
-                        <span class="bg-red-600 text-white px-6 py-2 rounded-full text-xl font-black shadow-lg animate-pulse">5/9(六) 正式開課</span>
-                    </div>
+                    <h3 class="text-2xl font-black text-gray-400 tracking-widest uppercase">上課時段概覽</h3>
                 </div>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- 五月課表 -->
-                    <div class="bg-white rounded-3xl border-4 border-blue-600 shadow-xl overflow-hidden">
-                        <div class="bg-blue-600 text-white py-4 px-6 text-center">
-                            <span class="text-2xl font-black">5月特訓日程</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex flex-wrap justify-center gap-2 mb-6">
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-black text-sm">5/9 (六)</span>
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-black text-sm">5/16 (六)</span>
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-black text-sm">5/23 (六)</span>
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-black text-sm">5/30 (六)</span>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-4 bg-orange-50 p-3 rounded-xl border-l-4 border-orange-500">
-                                    <span class="text-base font-black text-gray-600 whitespace-nowrap">08:00-09:00</span>
-                                    <span class="text-xl font-black text-orange-700">私中國文</span>
-                                </div>
-                                <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border-l-4 border-red-500">
-                                    <span class="text-base font-black text-gray-600 whitespace-nowrap">09:00-12:00</span>
-                                    <span class="text-xl font-black text-red-600">私中數學</span>
-                                </div>
-                                <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border-l-4 border-green-600">
-                                    <span class="text-base font-black text-gray-600 whitespace-nowrap">12:40-15:40</span>
-                                    <span class="text-xl font-black text-green-700">私中英文、英檢</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="schedule-card border-orange-400">
+                        <p class="text-gray-400 font-bold text-lg mb-2">08:00-09:00</p>
+                        <p class="text-2xl font-black text-orange-700">私中國文</p>
                     </div>
-
-                    <!-- 六月課表 -->
-                    <div class="bg-white rounded-3xl border-4 border-red-600 shadow-xl overflow-hidden">
-                        <div class="bg-red-600 text-white py-4 px-6 text-center">
-                            <span class="text-2xl font-black">6月特訓日程</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex flex-wrap justify-center gap-2 mb-6">
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full font-black text-sm">6/6 (六)</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full font-black text-sm">6/13 (六)</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full font-black text-sm">6/27 (六)</span>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-4 bg-orange-50 p-3 rounded-xl border-l-4 border-orange-500">
-                                    <span class="text-base font-black text-gray-600 whitespace-nowrap">08:00-09:00</span>
-                                    <span class="text-xl font-black text-orange-700">私中國文</span>
-                                </div>
-                                <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border-l-4 border-red-500">
-                                    <span class="text-base font-black text-gray-600 whitespace-nowrap">09:00-12:00</span>
-                                    <span class="text-xl font-black text-red-600">私中數學</span>
-                                </div>
-                                <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border-l-4 border-green-600">
-                                    <span class="text-base font-black text-gray-600 whitespace-nowrap">12:40-15:40</span>
-                                    <span class="text-xl font-black text-green-700">私中英文、英檢</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="schedule-card border-red-500">
+                        <p class="text-gray-400 font-bold text-lg mb-2">09:00-12:00</p>
+                        <p class="text-2xl font-black text-red-600">私中數學</p>
                     </div>
-                </div>
-
-                <div class="mt-6 text-center">
-                    <p class="text-gray-500 font-bold bg-gray-100 inline-block px-6 py-2 rounded-lg">⚠️ 備註：未滿 5 人不開班</p>
-                </div>
-
-                <div class="mt-8 bg-yellow-50 p-8 rounded-3xl border-2 border-yellow-200">
-                    <h4 class="text-2xl font-black text-red-700 mb-4 flex items-center gap-2">
-                        <span>💡</span> 為什麼我們強調「私中英文班」？
-                    </h4>
-                    <div class="text-gray-700 space-y-4 text-lg leading-relaxed">
-                        <p>私中入學考的英文考題多偏向「英檢」的閱讀程度。因此，我們的教材特別採用<span class="font-black text-blue-700">進階英文及英檢教材</span>進行特訓。</p>
-                        <p>此外，考量到<span class="font-black">義民中學</span>入學後亦規定必須參加英檢考試，提前準備不僅能應付難度極高的私中考試，更能為未來的英檢考試打好根基。</p>
-                        <p class="text-xl font-black text-center text-red-600 bg-white py-3 rounded-2xl shadow-sm border border-red-100">
-                            「摸拉阿 兼洗褲子」—— 雙重目標，一次達成！
-                        </p>
+                    <div class="schedule-card border-green-500">
+                        <p class="text-gray-400 font-bold text-lg mb-2">12:40-15:40</p>
+                        <p class="text-2xl font-black text-green-700">私中英文、英檢</p>
                     </div>
                 </div>
             </div>
 
+            <!-- 詳細課程規劃區 -->
+            <div class="mb-24">
+                <div class="text-center mb-10">
+                    <h3 class="text-3xl font-black text-blue-900 inline-block border-b-8 border-yellow-400 pb-2 mb-4">115年 升私中課程完整規劃</h3>
+                    <p class="text-gray-500 font-bold">精準進度安排，打造最強升學實力</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- 5/9 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-blue-800">5/9 (六) 正式開課</span>
+                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full font-bold">第一週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：基礎 & 詞語</strong> 字音字形深度辨正1 / 高頻成語辨析1</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 1. 乘法和除法</div>
+                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 1：人稱代名詞 主格與所有格</div>
+                        </div>
+                    </div>
+
+                    <!-- 5/16 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-gray-400">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-blue-800">5/16 (六)</span>
+                            <span class="bg-gray-500 text-white px-4 py-1 rounded-full font-bold">第二週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：常識 & 國學</strong> 精準修辭技巧大全1 / 文學常識1</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 2. 因數和倍數</div>
+                            <div class="p-3 rounded-xl bg-red-600 text-white md:col-span-1 shadow-inner relative overflow-hidden">
+                                <strong class="block mb-1">英文：當天停課</strong> 
+                                老師出國，當天不計費
+                                <p class="text-xs mt-1 opacity-80">12:00 國數結束後放學</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5/23 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-blue-800">5/23 (六)</span>
+                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full font-bold">第三週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：應用 & 閱讀</strong> 生活應用文格式1 / 白話文言閱讀1</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 3. 多邊形</div>
+                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 2：be 動詞直述句與疑問句</div>
+                        </div>
+                    </div>
+
+                    <!-- 5/30 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-blue-800">5/30 (六)</span>
+                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full font-bold">第四週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：基礎 & 詞語</strong> 字音字形深度辨正2 / 高頻成語辨析2</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 4. 擴分、約分、通分</div>
+                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 3：Who 的問答句</div>
+                        </div>
+                    </div>
+
+                    <!-- 6/6 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-red-600">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-red-600">6/6 (六)</span>
+                            <span class="bg-red-600 text-white px-4 py-1 rounded-full font-bold">第五週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：常識 & 國學</strong> 精準修辭技巧大全2 / 文學常識2</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 5. 線對稱圖形</div>
+                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 4：指示代名詞 this, that...</div>
+                        </div>
+                    </div>
+
+                    <!-- 6/13 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-red-600">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-red-600">6/13 (六)</span>
+                            <span class="bg-red-600 text-white px-4 py-1 rounded-full font-bold">第六週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：應用 & 閱讀</strong> 生活應用文格式2 / 白話文言閱讀2</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 6. 異分母分數的加減</div>
+                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 5：Where 詢問位置</div>
+                        </div>
+                    </div>
+
+                    <!-- 6/27 -->
+                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-red-600">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                            <span class="text-2xl font-black text-red-600">6/27 (六)</span>
+                            <span class="bg-red-600 text-white px-4 py-1 rounded-full font-bold">第七週</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：基礎 & 詞語</strong> 字音字形深度辨正3 / 高頻成語辨析3</div>
+                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 7. 整數的四則運算</div>
+                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 6：What time...? 的問答句</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 收費說明區 -->
+                <div class="mt-8 bg-gray-800 text-white p-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-yellow-400 p-3 rounded-2xl">
+                            <svg class="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-yellow-400 font-black text-xl mb-1">收費方式說明</p>
+                            <p class="text-gray-300">本班系採「儲值方式」收費，詳情請洽總班主任諮詢。</p>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <a href="tel:036562900" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-black hover:bg-yellow-300 transition shadow-lg">立即撥打：03-6562900</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 名師與榜單介紹 -->
             <div class="grid lg:grid-cols-2 gap-12 items-center mb-20 bg-white p-8 rounded-3xl border-2 border-gray-50 shadow-sm">
                 <div class="space-y-6">
                     <div class="flex items-center gap-4">
@@ -265,9 +323,9 @@
                     </div>
                     <div class="text-gray-700 leading-relaxed space-y-4">
                         <p class="text-xl font-bold text-gray-900 border-l-4 border-red-500 pl-4">每一位孩子都是獨一無二的。</p>
-                        <p class="text-lg">在金名，我們不僅僅是傳授知識，更是要點燃學習的熱情。不論是專為升學私中量身打造的「私中特訓班」，或是針對個別學科提供高效率補強的「個別指導班」，我們都能提供最貼近需求的教學內容。</p>
+                        <p class="text-lg">不論是專為升學私中量身打造的「私中特訓班」，或是針對個別學科提供高效率補強的「個別指導班」，我們都能提供最貼近需求的教學內容。</p>
                         <p class="text-lg bg-red-50 p-4 rounded-xl text-red-800 font-medium">
-                            照片中的總班主任，正是帶領許多學生衝刺私中、榜上有名的關鍵推手！我們以嚴謹的教學態度、靈活的教學方法，幫助孩子提升競爭力。
+                            由總班主任親自領軍，嚴謹的教學態度與靈活方法，是幫助孩子在激烈競爭中脫穎而出的關鍵。
                         </p>
                     </div>
                 </div>
@@ -283,85 +341,58 @@
                 <div class="space-y-6 order-1 lg:order-2">
                     <div class="flex items-center gap-4">
                         <span class="text-4xl">🏆</span>
-                        <h3 class="text-3xl font-black text-blue-700 tracking-tight">實力見證：全國榜首在金名！</h3>
+                        <h3 class="text-3xl font-black text-blue-700 tracking-tight">實力見證：全國榜首！</h3>
                     </div>
                     <div class="text-gray-700 leading-relaxed space-y-4">
-                        <p class="text-xl font-bold text-blue-900 italic">個別指導的卓越成效，深受家長信賴。</p>
-                        <p class="text-lg">來自曙光中學的學生，在「國中教育會考」中表現優異，成功考取 <span class="text-red-600 font-black">北一女</span>！更獲得了 <span class="bg-yellow-300 px-2 font-black">「全國榜首」</span> 的最高殊榮！</p>
-                        <p class="text-lg">我們以客製化的教學規劃，深入了解每位學生的學習瓶頸，並針對性地提供解決方案。在金名，每位學生都能獲得最大的關注與發揮最大的潛力。</p>
+                        <p class="text-xl font-bold text-blue-900 italic">個別指導卓越成效，深受家長信賴。</p>
+                        <p class="text-lg">來自曙光中學的學生，在教育會考中表現優異，成功考取 <span class="text-red-600 font-black">北一女</span> 並榮獲 <span class="bg-yellow-300 px-2 font-black">「全國榜首」</span>！這證明了金名教學系統的卓越實力。</p>
                     </div>
                 </div>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20 bg-green-50/20 p-8 rounded-3xl border-2 border-green-100">
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4">
-                        <span class="text-4xl">🎓</span>
-                        <h3 class="text-3xl font-black text-green-700 tracking-tight">金名私中特訓班學姐跨越巔峰</h3>
-                    </div>
-                    <div class="text-gray-700 leading-relaxed space-y-4">
-                        <p class="text-xl font-bold text-green-900 border-b-2 border-green-500 pb-2 inline-block">從金名私中特訓班出發，跨越巔峰</p>
-                        <p class="text-lg">學姐同時錄取 <span class="font-bold">義民資優班</span> 及 <span class="font-bold">曙光醫學班</span>。在總班主任建議下，就近至義民就讀，並在三年間維持 <span class="text-red-600 font-black">全校第一</span> 的頂尖成績！</p>
-                        <div class="grid grid-cols-1 gap-2">
-                            <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200">✨ 5A10+ 順利考取新竹實驗中學</span>
-                            <span class="bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200">✨ 錄取陽明交大電機系</span>
-                        </div>
-                        <p class="text-lg italic">金名是您通往私中圓夢的最強後盾。</p>
-                    </div>
-                </div>
-                <div class="poster-image-frame">
-                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhnhgLfmD8HhujNJXtwO3_PNNVBvWioO5ukacg82xybooa4YwQNOJcGG2WRuEKPONiSQtRsjv7wYtHdcBhvuPhiBFpmZ80PqNX9XuYtoLmN1ku-NfXnwVwOTHiomzMOX-IlFJdKbtw7xJ4TlKfqUXABvxQ1Xns86_hY_YIscS3b7lrvN3l7-uhOyCDhCag" alt="優秀學員心得分享" class="w-full h-auto object-cover">
-                </div>
-            </div>
-
+            <!-- 表單區 -->
             <div class="bg-white border-4 border-blue-500 rounded-3xl p-8 mb-16 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 opacity-10 rounded-full -mr-16 -mt-16"></div>
                 <div class="relative z-10">
-                    <h3 class="text-3xl font-black text-blue-700 mb-8 text-center">🎯 預約特訓！領取專屬諮詢機會</h3>
-                   <form 
-  id="enrollForm" 
-  action="https://formspree.io/f/mbdpndqq" 
-  method="POST" 
-  class="grid grid-cols-1 md:grid-cols-2 gap-6"
->
-    <div class="space-y-2">
-        <label class="block text-lg font-black text-gray-700 ml-1">學生姓名</label>
-        <input type="text" name="學生姓名" placeholder="請輸入姓名" class="form-input text-lg" required>
-    </div>
-    <div class="space-y-2">
-        <label class="block text-lg font-black text-gray-700 ml-1">就讀學校</label>
-        <input type="text" name="就讀學校" placeholder="例如：竹北國小" class="form-input text-lg" required>
-    </div>
-    <div class="space-y-2">
-        <label class="block text-lg font-black text-gray-700 ml-1">年級</label>
-        <select name="年級" class="form-input text-lg appearance-none bg-white font-bold" required>
-            <option value="" disabled selected>請點選年級</option>
-            <option value="小三">國小三年級</option>
-            <option value="小四">國小四年級</option>
-            <option value="小五">國小五年級</option>
-            <option value="小六">國小六年級</option>
-            <option value="國中">國中（七至九年級）</option>
-        </select>
-    </div>
-    <div class="space-y-2">
-        <label class="block text-lg font-black text-gray-700 ml-1">家長聯絡電話</label>
-        <input type="tel" name="聯絡電話" placeholder="09XX-XXX-XXX" class="form-input text-lg" required>
-    </div>
-    
-    <input type="hidden" name="_subject" value="新課程預約諮詢 - 金名升私中特訓班">
-
-    <div class="md:col-span-2 mt-6">
-        <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl text-2xl shadow-xl transition transform active:scale-95">
-            送出資料，預約專業諮詢
-        </button>
-    </div>
-</form>
+                    <h3 class="text-3xl font-black text-blue-700 mb-8 text-center">🎯 預約特訓！領取專業諮詢</h3>
+                   <form id="enrollForm" action="https://formspree.io/f/mbdpndqq" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-lg font-black text-gray-700 ml-1">學生姓名</label>
+                            <input type="text" name="學生姓名" placeholder="請輸入姓名" class="form-input text-lg" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-lg font-black text-gray-700 ml-1">就讀學校</label>
+                            <input type="text" name="就讀學校" placeholder="例如：竹北國小" class="form-input text-lg" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-lg font-black text-gray-700 ml-1">年級</label>
+                            <select name="年級" class="form-input text-lg appearance-none bg-white font-bold" required>
+                                <option value="" disabled selected>請點選年級</option>
+                                <option value="小三">國小三年級</option>
+                                <option value="小四">國小四年級</option>
+                                <option value="小五">國小五年級</option>
+                                <option value="小六">國小六年級</option>
+                                <option value="國中">國中（七至九年級）</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-lg font-black text-gray-700 ml-1">家長聯絡電話</label>
+                            <input type="tel" name="聯絡電話" placeholder="09XX-XXX-XXX" class="form-input text-lg" required>
+                        </div>
+                        <input type="hidden" name="_subject" value="新課程預約諮詢 - 金名升私中特訓班">
+                        <div class="md:col-span-2 mt-6">
+                            <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl text-2xl shadow-xl transition transform active:scale-95">
+                                送出資料，預約專業諮詢
+                            </button>
+                        </div>
+                    </form>
                     <div id="successMsg" class="hidden mt-6 bg-green-100 border-2 border-green-500 text-green-700 p-6 rounded-2xl text-center font-black text-xl">
                         🎉 資料已成功送出！專業顧問將盡速與您聯繫。
                     </div>
                 </div>
             </div>
 
+            <!-- Footer -->
             <div class="text-center pt-10 border-t-2 border-gray-100">
                 <div class="flex justify-center mb-10">
                     <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiZfm4VI-MMnLuqSU0xOgXwbWN-f3eN6F6Hn6rkbZes9wXfUw7655nIyo1LJ6QzA9cOv_j5wFfKW-gDTijB8NeuXVcZqvt93c-Mgiqn3KReMXtLJTczkM1PvTe_X0nLkTlMF_oXJnDUNmLACzognt2FkIU2A85MSRcQykKafbb8E-7xh1U9ZfW8_WYd6YY" alt="金名文理補習班" class="max-w-full h-auto max-h-32 shadow-sm">
@@ -412,7 +443,6 @@
                 if (typeof fbq === 'function') {
                     fbq('track', 'Lead');
                 }
-
                 form.classList.add('hidden');
                 successBox.classList.remove('hidden');
                 successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
