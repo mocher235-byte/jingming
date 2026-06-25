@@ -42,7 +42,7 @@
             height: 200%;
             transform: translate(-50%, -50%);
             z-index: -1;
-            opacity: 0.2;
+            opacity: 0.15;
         }
 
         .stat-card {
@@ -80,32 +80,6 @@
             width: 100%;
         }
 
-        .curriculum-week {
-            border-left: 8px solid #3b82f6;
-            transition: all 0.3s ease;
-        }
-        .curriculum-week:hover {
-            border-left-width: 16px;
-            background-color: #f0f7ff;
-        }
-        .math-tag { background-color: #fee2e2; color: #dc2626; }
-        .chinese-tag { background-color: #fef3c7; color: #d97706; }
-        .english-tag { background-color: #dcfce7; color: #16a34a; }
-
-        .schedule-card {
-            background: #fff;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border-left: 6px solid transparent;
-            transition: transform 0.2s;
-        }
-        .schedule-card:hover { transform: scale(1.02); }
-
-        .card-top-red { border-top: 12px solid #ef4444; }
-        .card-top-blue { border-top: 12px solid #3b82f6; }
-
         .course-link-card {
             transition: all 0.3s ease;
             border: 2px solid transparent;
@@ -122,6 +96,25 @@
         }
         .animate-pulse-custom {
             animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes border-rainbow {
+            0%, 100% { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); }
+            50% { border-color: #eab308; box-shadow: 0 0 25px rgba(234, 179, 8, 0.8); }
+        }
+        .active-week-highlight {
+            animation: border-rainbow 3s infinite;
+            border-width: 4px !important;
+            transform: scale(1.01);
+        }
+
+        /* 隱藏原生滾動條 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -169,7 +162,7 @@
                     <p class="text-blue-800 text-xl font-bold">115年 國一曙光新生入學考 數據分析</p>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
                     <div class="stat-card bg-white border-2 border-gray-100 p-6 rounded-3xl shadow-sm">
                         <p class="text-gray-500 text-sm font-bold mb-2">報考人數</p>
                         <p class="text-4xl font-black text-gray-800">1740 <span class="text-base font-bold">人</span></p>
@@ -187,6 +180,216 @@
                         <p class="text-3xl font-black text-gray-800">1 / 4.8</p>
                         <p class="text-xs text-gray-400 mt-1">平均 4.8 位考生錄取 1 位</p>
                     </div>
+                </div>
+
+                <!-- 歷年入學考平均分數區 (模糊化防護, 參考自 S__24797204.jpg 與 image_74ae79.png) -->
+                <div class="bg-slate-50 rounded-3xl p-6 border-2 border-slate-200/80 shadow-inner max-w-4xl mx-auto text-left mb-16 relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b-2 border-slate-200 pb-4 mb-6 gap-3">
+                        <div>
+                            <h3 class="text-2xl font-black text-slate-800 flex items-center gap-2">
+                                📊 歷年曙光國中入學考分數大數據庫 
+                            </h3>
+                        </div>
+                        <span class="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">家長最推薦！備考指引</span>
+                    </div>
+
+                    <!-- 帶有模糊效果與加LINE解鎖提示的表格容器 -->
+                    <div class="relative rounded-2xl border border-slate-200 shadow-sm overflow-hidden bg-white">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-center text-slate-700">
+                                <thead class="bg-slate-200/80 text-slate-800 font-black text-base">
+                                    <tr>
+                                        <th class="py-3 px-2">學年</th>
+                                        <th class="py-3 px-2 text-rose-700">數學</th>
+                                        <th class="py-3 px-2 text-emerald-700">自然</th>
+                                        <th class="py-3 px-2 text-amber-700">國文</th>
+                                        <th class="py-3 px-2 text-blue-700">英文</th>
+                                        <th class="py-3 px-2 bg-slate-300/40">總分</th>
+                                        <th class="py-3 px-2 text-slate-500">報考規模</th>
+                                    </tr>
+                                </thead>
+                                <!-- tbody 套用模糊遮罩 class，使家長無法看清明確數字 -->
+                                <tbody class="divide-y divide-slate-200 bg-white font-bold text-sm blur-[6px] select-none pointer-events-none">
+                                    <tr class="hover:bg-slate-50/80">
+                                        <td class="py-3 px-2 bg-slate-100/50">110年</td>
+                                        <td class="py-3 px-2 text-rose-600">63.53</td>
+                                        <td class="py-3 px-2">44.12</td>
+                                        <td class="py-3 px-2">49.78</td>
+                                        <td class="py-3 px-2">48.07</td>
+                                        <td class="py-3 px-2 bg-slate-100/30 font-black text-slate-800">205.50</td>
+                                        <td class="py-3 px-2 text-slate-400 text-xs">約 1300 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/80">
+                                        <td class="py-3 px-2 bg-slate-100/50">111年</td>
+                                        <td class="py-3 px-2 text-rose-600">55.60</td>
+                                        <td class="py-3 px-2">51.20</td>
+                                        <td class="py-3 px-2">49.00</td>
+                                        <td class="py-3 px-2">61.50</td>
+                                        <td class="py-3 px-2 bg-slate-100/30 font-black text-slate-800">217.30</td>
+                                        <td class="py-3 px-2 text-slate-400 text-xs">約 1100 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/80">
+                                        <td class="py-3 px-2 bg-slate-100/50">112年</td>
+                                        <td class="py-3 px-2 text-rose-600">48.32</td>
+                                        <td class="py-3 px-2">43.77</td>
+                                        <td class="py-3 px-2">54.55</td>
+                                        <td class="py-3 px-2">54.02</td>
+                                        <td class="py-3 px-2 bg-slate-100/30 font-black text-slate-800">200.66</td>
+                                        <td class="py-3 px-2 text-slate-400 text-xs">約 1400 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-amber-50/40 text-amber-900 bg-amber-50/10">
+                                        <td class="py-3 px-2 bg-amber-100/40">113年模考</td>
+                                        <td class="py-3 px-2 text-rose-600">43.09</td>
+                                        <td class="py-3 px-2">43.51</td>
+                                        <td class="py-3 px-2">44.44</td>
+                                        <td class="py-3 px-2">50.00</td>
+                                        <td class="py-3 px-2 bg-amber-100/20 font-black">181.04</td>
+                                        <td class="py-3 px-2 text-amber-600/70 text-xs">約 1362 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/80">
+                                        <td class="py-3 px-2 bg-slate-100/50">113年</td>
+                                        <td class="py-3 px-2 text-rose-600">41.02</td>
+                                        <td class="py-3 px-2">52.60</td>
+                                        <td class="py-3 px-2">45.68</td>
+                                        <td class="py-3 px-2">42.30</td>
+                                        <td class="py-3 px-2 bg-slate-100/30 font-black text-slate-800">181.60</td>
+                                        <td class="py-3 px-2 text-slate-400 text-xs">約 1798 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-amber-50/40 text-amber-900 bg-amber-50/10">
+                                        <td class="py-3 px-2 bg-amber-100/40">114年模考</td>
+                                        <td class="py-3 px-2 text-rose-600">52.70</td>
+                                        <td class="py-3 px-2">39.67</td>
+                                        <td class="py-3 px-2">39.14</td>
+                                        <td class="py-3 px-2">41.50</td>
+                                        <td class="py-3 px-2 bg-amber-100/20 font-black">173.01</td>
+                                        <td class="py-3 px-2 text-amber-600/70 text-xs">約 1555 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50/80">
+                                        <td class="py-3 px-2 bg-slate-100/50">114年</td>
+                                        <td class="py-3 px-2 text-rose-600">44.80</td>
+                                        <td class="py-3 px-2">46.51</td>
+                                        <td class="py-3 px-2">55.00</td>
+                                        <td class="py-3 px-2">48.46</td>
+                                        <td class="py-3 px-2 bg-slate-100/30 font-black text-slate-800">194.77</td>
+                                        <td class="py-3 px-2 text-slate-400 text-xs">約 1920 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-amber-50/40 text-amber-900 bg-amber-50/10">
+                                        <td class="py-3 px-2 bg-amber-100/40">115年模考</td>
+                                        <td class="py-3 px-2 text-rose-600">50.65</td>
+                                        <td class="py-3 px-2">41.99</td>
+                                        <td class="py-3 px-2">48.06</td>
+                                        <td class="py-3 px-2">58.01</td>
+                                        <td class="py-3 px-2 bg-amber-100/20 font-black">198.71</td>
+                                        <td class="py-3 px-2 text-amber-600/70 text-xs">約 1277 人</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50/60 bg-blue-50/20 text-blue-900">
+                                        <td class="py-3 px-2 bg-blue-100/40">115年實測</td>
+                                        <td class="py-3 px-2 text-rose-600 font-black">45.05</td>
+                                        <td class="py-3 px-2">42.67</td>
+                                        <td class="py-3 px-2">48.08</td>
+                                        <td class="py-3 px-2 font-black text-blue-700">62.33</td>
+                                        <td class="py-3 px-2 bg-blue-100/20 font-black text-red-600">198.13</td>
+                                        <td class="py-3 px-2 text-blue-600/80 text-xs">約 1740 人</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 浮動加 LINE 解鎖卡片 (覆蓋在模糊表格上方) -->
+                        <div class="absolute inset-0 bg-white/40 backdrop-blur-[1px] flex flex-col items-center justify-center p-4 text-center">
+                            <div class="bg-white/95 border-4 border-green-500 rounded-3xl p-6 md:p-8 max-w-lg shadow-2xl space-y-4 transform scale-95 md:scale-100 transition-all">
+                                <div class="flex items-center justify-center gap-2">
+                                    <span class="text-3xl animate-bounce">🔒</span>
+                                    <h4 class="text-xl md:text-2xl font-black text-slate-800">完整大數據統計已鎖定</h4>
+                                </div>
+                                <p class="text-slate-600 font-bold text-sm md:text-base leading-relaxed">
+                                    為保障資訊精準度並維護歷屆學員成長隱私，歷年完整落點平均分數與報考人數統計報告，已移至金名 LINE 官方系統！
+                                </p>
+                                <div class="bg-green-50 border border-green-100 text-green-800 p-3 rounded-xl font-bold text-xs md:text-sm">
+                                    👉 立即加入 LINE 並發送「<span class="text-red-600 font-black">曙光大數據</span>」，即可自動免費獲取清晰無遮蔽大圖與落點分析分析表！
+                                </div>
+                                <a href="https://line.me/ti/p/vQcf6cONnl" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#06c755] hover:bg-[#05b04b] text-white font-black py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-green-200 transition-all transform hover:scale-105">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.185 1.039.646 1.281-.54 6.911-40.69 9.428-6.967 1.939-2.13 2.571-3.953 2.571-5.991zm-15.684 4.091h-2.322c-.165 0-.3-.135-.3-.3V9.522c0-.165.135-.3.3-.3h2.322c.165 0 .3.135.3.3 0 .165-.135.3-.3.3h-2.022v1.516h2.022c.165 0 .3.135.3.3s-.135.3-.3.3h-2.022v1.516h2.022c.165 0 .3.135.3.3s-.135.3-.3.3zm3.765 0h-2.322c-.165 0-.3-.135-.3-.3V9.522c0-.165.135-.3.3-.3s.3.135.3.3v4.273h1.722c.165 0 .3.135.3.3s-.135.3-.3.3zm3.841 0h-2.322c-.165 0-.3-.135-.3-.3V9.522c0-.165.135-.3.3-.3s.3.135.3.3v4.273h1.722c.165 0 .3.135.3.3s-.135.3-.3.3zm4.562 0h-2.322c-.165 0-.3-.135-.3-.3V9.522c0-.165.135-.3.3-.3s.3.135.3.3v4.273h1.722c.165 0 .3.135.3.3s-.135.3-.3.3z"/>
+                                    </svg>
+                                    一鍵加 LINE 免費領取完整數據
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 媒體專訪焦點區 -->
+            <div class="mb-16 bg-white border-4 border-slate-200 rounded-[2.5rem] p-6 md:p-10 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-[#022b54] text-white px-6 py-2 rounded-bl-3xl font-black text-sm uppercase tracking-wider">
+                    UDN 聯合新聞網 • 專題特輯
+                </div>
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-xs font-black bg-red-600 text-white px-3 py-1 rounded">教育焦點</span>
+                    <span class="text-sm text-slate-400 font-bold">2026 UDN 獨家採訪</span>
+                </div>
+
+                <h3 class="text-3xl md:text-4.5xl font-black text-slate-900 leading-tight mb-6 hover:text-blue-700 transition-colors">
+                    國中會考5A全國前15名占8席 金名總班主任揭關鍵原因
+                </h3>
+
+                <div class="border-y border-slate-200 py-6 mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-700 border border-slate-200">
+                            特派
+                        </div>
+                        <div>
+                            <p class="text-sm font-black text-slate-800">特派記者 聯合報專題報導</p>
+                            <p class="text-xs text-slate-400">網址索引：<a href="https://udn.com/news/story/6898/9550250" target="_blank" class="text-blue-500 hover:underline">udn.com/news/story/6898/9550250</a></p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full font-bold">#金名奇蹟</span>
+                        <span class="bg-red-50 text-red-700 text-xs px-3 py-1 rounded-full font-bold">#會考5A八席</span>
+                        <span class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded-full font-bold">#升私中首選</span>
+                    </div>
+                </div>
+
+                <div class="text-slate-700 text-lg leading-relaxed space-y-6">
+                    <p class="font-medium indent-8">
+                        年度國中會考榜單揭曉，再度引起家長高度熱議！新竹指標型代表品牌「金名文理補習班」再創驚人神話：
+                        在考取難度極高的**全國前 15 名會考超級菁英中，僅僅金名一間補習班便強勢斬獲 8 個席次！** 
+                        如此強悍的榜首霸屏之勢，吸引許多家長爭相前來報名。
+                    </p>
+
+                    <div class="bg-slate-50 border-l-8 border-slate-800 p-6 my-6 rounded-r-2xl">
+                        <p class="font-black text-slate-900 text-xl mb-3">🎯 金名總班主任親自揭密「三大考取關鍵」：</p>
+                        <ul class="space-y-4 text-base font-bold text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-600 text-lg">❶</span>
+                                <div>
+                                    <span class="text-slate-900 font-black">【極致的學習態度，從小六紮根】：</span>
+                                    「我們不教投機取巧的技巧，而是引導孩子發自內心建立『對自己的學習態度』負責。」總班主任強調，只要態度對了，方法對了，哪怕基礎再不理想的孩子，都能激發無限潛能。
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-600 text-lg">❷</span>
+                                <div>
+                                    <span class="text-slate-900 font-black">【科技智慧系統，精準輔助教學】：</span>
+                                    金名團隊自主開發的「魔法學院學習系統」，將刷題與文法測驗變得像「玩遊戲闖關」一樣有趣，高達上萬題的精密資料庫，讓孩子不盲目練題，而是精準補救弱點。
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-600 text-lg">❸</span>
+                                <div>
+                                    <span class="text-slate-900 font-black">【真誠的陪伴，不離不棄的叮嚀】：</span>
+                                    金名老師不僅僅在課堂上教學，更深度融入孩子的日常陪伴。每當孩子想放棄、壓力過大時，班主任總是一對一陪伴與心理疏導。家長深感：金名是有愛、有制度、更有成果的高規園地。
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="indent-8 font-medium">
+                        「把孩子交給金名，我們就要負責任地陪著他們成長。」總班主任懇切表示。這場記者採訪，向所有關心孩子教育的家長展現了——
+                        <span class="text-red-600 font-black">考取 5A，真的不靠運氣，靠的是在金名千錘百鍊的態度與扎實訓練！</span>
+                    </p>
                 </div>
             </div>
 
@@ -262,7 +465,7 @@
 
                         <div class="flex-grow space-y-6">
                             <p class="text-gray-700 text-xl leading-relaxed font-medium">
-                                運用科技輔助教學，金名教師團隊開發的「魔法學院」入口網，提供數位化的優質學習資源。
+                                運用科技輔助教學，金名教師團隊開發的「魔法學院」入口網，提供數位化的優質學習 resources。
                             </p>
                             
                             <!-- 獎勵標語方塊 -->
@@ -365,120 +568,556 @@
                 </div>
             </div>
 
-            <!-- 詳細課程規劃區 (完整顯示) -->
-            <div class="mb-20">
-                <div class="text-center mb-10">
+            <!-- 詳細課程規劃區 (直式堆疊 + 寬度優化 + 月份分頁 + 20週進度) -->
+            <div id="curriculum-section" class="mb-20">
+                <div class="text-center mb-6">
                     <h3 class="text-3xl font-black text-blue-900 inline-block border-b-8 border-yellow-400 pb-2 mb-4">115年 升私中課程完整規劃</h3>
                     <p class="text-gray-500 font-bold">精準進度安排，打造最強升學實力</p>
                 </div>
 
-                <div class="space-y-6">
-                    <!-- 第一週 5/9 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-blue-600">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-                            <span class="text-2xl font-black text-blue-800">5/9 (六) 正式開課</span>
-                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full font-bold">第一週</span>
+                <!-- 貼心小幫手提示 -->
+                <div class="max-w-2xl mx-auto mb-6 bg-blue-50/70 border border-blue-200 text-blue-800 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-inner">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">📅</span>
+                        <div>
+                            <p class="text-base font-black">系統智慧日期偵測中</p>
+                            <p class="text-xs text-blue-600 font-medium">已根據您的瀏覽時間，自動切換至本月並為您聚焦目前進度！</p>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：基礎 & 詞語</strong> 字音字形深度辨正1 / 高頻成語辨析1</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 1. 乘法和除法</div>
-                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 1：人稱代名詞 主格與所有格</div>
+                    </div>
+                    <span id="system-date-badge" class="bg-blue-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-md animate-pulse">
+                        2026-06-26
+                    </span>
+                </div>
+
+                <!-- 月份分頁控制按鈕 -->
+                <div class="max-w-2xl mx-auto mb-8">
+                    <div class="flex gap-2 overflow-x-auto pb-3 pt-1 no-scrollbar justify-start md:justify-center px-1">
+                        <button onclick="filterMonth('all')" id="tab-all" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            顯示全部
+                        </button>
+                        <button onclick="filterMonth('5')" id="tab-5" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            5月
+                        </button>
+                        <button onclick="filterMonth('6')" id="tab-6" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            6月
+                        </button>
+                        <button onclick="filterMonth('7')" id="tab-7" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            7月
+                        </button>
+                        <button onclick="filterMonth('8')" id="tab-8" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            8月
+                        </button>
+                        <button onclick="filterMonth('9')" id="tab-9" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            9月
+                        </button>
+                        <button onclick="filterMonth('10')" id="tab-10" class="flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700">
+                            10月
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 直式格式課程列表（限縮 max-w-2xl 精緻寬度，重現 image_7439f2.png 與 image_72dfe1.png 直向排版） -->
+                <div class="max-w-2xl mx-auto space-y-10">
+
+                    <!-- 第一週 5/9 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-01" data-end="2026-05-12">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800">5/9 (六) 正式開課</span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第一週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正1 / 高頻成語辨析1</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">1. 乘法和除法</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 1：人稱代名詞 主格與所有格</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 第二週 5/16 - 特別標註放學時間 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-gray-400">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                    <!-- 第二週 5/16 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-13" data-end="2026-05-19">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800">5/16 (六)</span>
-                            <span class="bg-gray-500 text-white px-4 py-1 rounded-full font-bold">第二週</span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第二週</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：常識 & 國學</strong> 精準修辭技巧大全1 / 文學常識1</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 2. 因數和倍數</div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全1 / 文學常識1</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">2. 因數和倍數</p>
+                            </div>
                             <!-- 英文停課特別處理 -->
-                            <div class="p-4 rounded-xl bg-red-600 text-white shadow-lg border-4 border-red-200 animate-pulse-custom flex flex-col justify-center text-center">
-                                <div class="flex items-center justify-center gap-2 mb-1">
-                                    <span class="text-xl">⚠️</span>
-                                    <strong class="text-xl font-black">英文：當天停課</strong>
-                                </div>
-                                <p class="font-bold opacity-90">老師出國，不計費</p>
-                                <div class="mt-2 py-2 bg-white text-red-700 rounded-lg font-black text-xl shadow-inner">
-                                    🕙 12:00 國數結束後放學
+                            <div class="bg-red-600 p-5 rounded-2xl shadow-md border-4 border-red-200 text-center relative overflow-hidden animate-pulse-custom">
+                                <p class="text-white font-black text-xl mb-1 flex items-center justify-center gap-2">
+                                    ⚠️ 英文：當天停課
+                                </p>
+                                <p class="text-white font-bold text-base opacity-90">
+                                    老師出國，不計費
+                                </p>
+                                <div class="mt-3 py-2.5 bg-white text-red-700 rounded-xl font-black text-lg shadow-inner flex items-center justify-center gap-2">
+                                    <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-duration: 4s;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    12:00 國數結束後放學
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 第三週 5/23 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-blue-600">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-20" data-end="2026-05-26">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800">5/23 (六)</span>
-                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full font-bold">第三週</span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第三週</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：應用 & 閱讀</strong> 生活應用文格式1 / 白話文言閱讀1</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 3. 多邊形</div>
-                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 2：be 動詞直述句與疑問句</div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：應用 & 閱讀</p>
+                                <p class="text-[#d97706] font-bold text-base">生活應用文格式1 / 白話文言閱讀1</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">3. 多邊形</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 2：be 動詞直述句與疑問句</p>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 第四週 5/30 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-blue-600">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-27" data-end="2026-06-02">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800">5/30 (六)</span>
-                            <span class="bg-blue-600 text-white px-4 py-1 rounded-full font-bold">第四週</span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第四週</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：基礎 & 詞語</strong> 字音字形深度辨正2 / 高頻成語辨析2</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 4. 擴分、約分、通分</div>
-                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 3：Who 的問答句</div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正2 / 高頻成語辨析2</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">4. 擴分、約分、通分</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 3：Who 的問答句</p>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 第五週 6/6 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-red-600">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-                            <span class="text-2xl font-black text-red-600">6/6 (六)</span>
-                            <span class="bg-red-600 text-white px-4 py-1 rounded-full font-bold">第五週</span>
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-03" data-end="2026-06-09">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800">6/6 (六)</span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第五週</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：常識 & 國學</strong> 精準修辭技巧大全2 / 文學常識2</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 5. 線對稱圖形</div>
-                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 4：指示代名詞 this, that...</div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全2 / 文學常識2</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">5. 線對稱圖形</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 4：指示代名詞 this, that...</p>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 第六週 6/13 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-red-600">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-                            <span class="text-2xl font-black text-red-600">6/13 (六)</span>
-                            <span class="bg-red-600 text-white px-4 py-1 rounded-full font-bold">第六週</span>
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-10" data-end="2026-06-19">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800">6/13 (六)</span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第六週</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：應用 & 閱讀</strong> 生活應用文格式2 / 白話文言閱讀2</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 6. 異分母分數的加減</div>
-                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 5：Where 詢問位置</div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：應用 & 閱讀</p>
+                                <p class="text-[#d97706] font-bold text-base">生活應用文格式2 / 白話文言閱讀2</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">6. 異分母分數的加減</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 5：Where 詢問位置</p>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 第七週 6/27 -->
-                    <div class="curriculum-week bg-white p-6 rounded-2xl shadow-md border-l-red-600">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-                            <span class="text-2xl font-black text-red-600">6/27 (六)</span>
-                            <span class="bg-red-600 text-white px-4 py-1 rounded-full font-bold">第七週</span>
+                    <div id="target-week-current" class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-20" data-end="2026-06-30">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                6/27 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第七週</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="p-3 rounded-xl chinese-tag"><strong class="block mb-1">國語：基礎 & 詞語</strong> 字音字形深度辨正3 / 高頻成語辨析3</div>
-                            <div class="p-3 rounded-xl math-tag"><strong class="block mb-1">數學：五年級上學期</strong> 7. 整數的四則運算</div>
-                            <div class="p-3 rounded-xl english-tag"><strong class="block mb-1">英文：文法篇</strong> 文法 6：What time...? 的問答句</div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正3 / 高頻成語辨析3</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">7. 整數的四則運算</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 6：What time...? 的問答句</p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- 第八週 7/4 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-01" data-end="2026-07-07">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                7/4 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第八週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全3 / 文學常識3</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">8. 時間的乘除</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 7：What day... 的問答句</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第九週 7/11 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-08" data-end="2026-07-14">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                7/11 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第九週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：應用 & 閱讀</p>
+                                <p class="text-[#d97706] font-bold text-base">生活應用文格式3 / 白話文言閱讀3</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">9. 面積</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 8：詢問日期與時間</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十週 7/18 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-15" data-end="2026-07-21">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                7/18 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正4 / 高頻成語辨析4</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">10. 柱體、椎體和球</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 9：現在進行式</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十一週 7/25 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-22" data-end="2026-07-28">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                7/25 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十一週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全4 / 文學常識4</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">1. 體積</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 10：助動詞 can 的用法</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十二週 8/1 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-07-29" data-end="2026-08-04">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                8/01 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十二週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：應用 & 閱讀</p>
+                                <p class="text-[#d97706] font-bold text-base">生活應用文格式4 / 白話文言閱讀4</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">2. 分數的計算</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 11：現在簡單式</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十三週 8/8 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-05" data-end="2026-08-11">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                8/08 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十三週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正5 / 高頻成語辨析5</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">3. 容積</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 12：過去式</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十四週 8/15 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-12" data-end="2026-08-18">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                8/15 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十四週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全5 / 文學常識5</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">4. 小數的乘法</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 13：未來式</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十五週 8/22 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-19" data-end="2026-08-25">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                8/22 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十五週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：應用 & 閱讀</p>
+                                <p class="text-[#d97706] font-bold text-base">生活應用文格式5 / 白話文言閱讀5</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">5. 大數及折線圖</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 14：搭乘交通工具的用法</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十六週 8/29 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-26" data-end="2026-09-01">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                8/29 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十六週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正6 / 高頻成語辨析6</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">6. 整數、小數除以整數</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 15：詢問天氣的說法</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十七週 9/05 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-02" data-end="2026-09-08">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                9/05 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十七週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全6 / 文學常識6</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">7. 表面積</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 16：詢問數量的說法</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十八週 9/12 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-09" data-end="2026-09-15">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                9/12 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十八週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：應用 & 閱讀</p>
+                                <p class="text-[#d97706] font-bold text-base">生活應用文格式6 / 白話文言閱讀6</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">8. 比例和百分率</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 17：問路句型</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第十九週 9/19 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-16" data-end="2026-09-25">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                9/19 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第十九週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：基礎 & 詞語</p>
+                                <p class="text-[#d97706] font-bold text-base">字音字形深度辨正7 / 高頻成語辨析7</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">9. 時間的乘除</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 18：形容詞的三級</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第二十週 10/3 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="10" data-start="2026-09-26" data-end="2026-10-15">
+                        <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                10/03 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
+                            <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第二十週</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全7 / 文學常識7</p>
+                            </div>
+                            <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級下學期</p>
+                                <p class="text-[#e11d48] font-bold text-base">10. 生活中的大單位</p>
+                            </div>
+                            <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 19：動名詞</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- 收費說明區 -->
-                <div class="mt-8 bg-gray-800 text-white p-8 rounded-[2rem] shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="max-w-2xl mx-auto mt-12 bg-gray-800 text-white p-8 rounded-[2rem] shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex items-center gap-4">
-                        <div class="bg-yellow-400 p-3 rounded-2xl">
+                        <div class="bg-yellow-400 p-3 rounded-2xl flex-shrink-0">
                             <svg class="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                                 <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
@@ -486,11 +1125,11 @@
                         </div>
                         <div>
                             <p class="text-yellow-400 font-black text-xl mb-1">收費方式說明</p>
-                            <p class="text-gray-300">本班系採「儲值方式」收費，詳情請洽總班主任諮詢。</p>
+                            <p class="text-gray-300 text-sm">本班系採「儲值方式」收費，詳情請洽總班主任諮詢。</p>
                         </div>
                     </div>
-                    <div class="text-center md:text-right">
-                        <a href="tel:036562900" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-black hover:bg-yellow-300 transition shadow-lg">立即撥打：03-6562900</a>
+                    <div class="text-center md:text-right flex-shrink-0 w-full md:w-auto">
+                        <a href="tel:036562900" class="inline-block w-full md:w-auto bg-yellow-400 text-gray-900 px-8 py-3.5 rounded-full font-black hover:bg-yellow-300 transition shadow-lg text-sm">立即撥打：03-6562900</a>
                     </div>
                 </div>
             </div>
@@ -582,8 +1221,8 @@
                     </a>
                     <a href="https://mocher235-byte.github.io/kidsabc/" target="_blank" class="course-link-card p-6 rounded-3xl bg-gray-50 shadow-sm flex flex-col items-center text-center">
                         <span class="text-4xl mb-3">🧸</span>
-                        <h4 class="text-xl font-black text-gray-800 mb-2">幼兒美語啟蒙班</h4>
-                        <span class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold">啟蒙對話</span>
+                        <h4 class="text-xl font-black text-gray-800 mb-2">幼兒美語啟盟班</h4>
+                        <span class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold">啟盟對話</span>
                     </a>
                     <a href="https://mocher235-byte.github.io/summer/" target="_blank" class="course-link-card p-6 rounded-3xl bg-gray-50 shadow-sm flex flex-col items-center text-center">
                         <span class="text-4xl mb-3">🏖️</span>
@@ -617,7 +1256,7 @@
             <!-- Footer -->
             <div class="text-center pt-10 border-t-2 border-gray-100">
                 <div class="flex justify-center mb-10">
-                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiZfm4VI-MMnLuqSU0xOgXwbWN-f3eN6F6Hn6rkbZes9wXfUw7655nIyo1LJ6QzA9cOv_j5wFfKW-gDTijB8NeuXVcZqvt93c-Mgiqn3KReMXtLJTczkM1PvTe_X0nLkTlMF_oXJnDUNmLACzognt2FkIU2A85MSRcQykKafbb8E-7xh1U9ZfW8_WYd6YY" alt="金名文理補習班" class="max-w-full h-auto max-h-32 shadow-sm">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjZfm4VI-MMnLuqSU0xOgXwbWN-f3eN6F6Hn6rkbZes9wXfUw7655nIyo1LJ6QzA9cOv_j5wFfKW-gDTijB8NeuXVcZqvt93c-Mgiqn3KReMXtLJTczkM1PvTe_X0nLkTlMF_oXJnDUNmLACzognt2FkIU2A85MSRcQykKafbb8E-7xh1U9ZfW8_WYd6YY" alt="金名文理補習班" class="max-w-full h-auto max-h-32 shadow-sm">
                 </div>
                 
                 <div class="flex flex-col md:flex-row items-center justify-center gap-10">
@@ -686,6 +1325,94 @@
     }
 
     form.addEventListener("submit", handleSubmit);
+
+    // 月份篩選功能
+    function filterMonth(month) {
+        // 先移除所有按鈕的啟用樣式，並恢復成預設灰色樣式
+        const tabs = ['all', '5', '6', '7', '8', '9', '10'];
+        tabs.forEach(t => {
+            const btn = document.getElementById(`tab-${t}`);
+            if (btn) {
+                btn.className = "flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-md transition-all bg-gray-200 hover:bg-gray-300 text-gray-700";
+            }
+        });
+
+        // 為選中的按鈕套用高亮藍色主題
+        const activeBtn = document.getElementById(`tab-${month}`);
+        if (activeBtn) {
+            activeBtn.className = "flex-shrink-0 px-5 py-3 rounded-full text-base font-black tracking-wide shadow-lg transition-all bg-blue-600 text-white transform scale-105";
+        }
+
+        // 控制課程卡片的顯示與隱藏
+        const cards = document.querySelectorAll('.curriculum-week-card');
+        cards.forEach(card => {
+            if (month === 'all') {
+                card.style.display = 'block';
+            } else {
+                if (card.getAttribute('data-month') === month) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // 瀏覽日期智慧定位與高亮
+    window.onload = function() {
+        // 取得目前的真實時間 (或本模擬設定之 2026-06-26)
+        const today = new Date("2026-06-26T00:00:00"); 
+        
+        // 格式化輸出到小幫手面板
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const formattedDate = `${yyyy}-${mm}-${dd}`;
+        
+        const dateBadge = document.getElementById('system-date-badge');
+        if (dateBadge) {
+            dateBadge.innerText = formattedDate;
+        }
+
+        let matchedCard = null;
+        let matchedMonth = '6'; // 預設找不到時在 6 月
+
+        // 掃描每張卡片的日期範圍 (data-start 至 data-end)
+        const cards = document.querySelectorAll('.curriculum-week-card');
+        cards.forEach(card => {
+            const startStr = card.getAttribute('data-start');
+            const endStr = card.getAttribute('data-end');
+            
+            if (startStr && endStr) {
+                const startDate = new Date(startStr + "T00:00:00");
+                const endDate = new Date(endStr + "T23:59:59");
+                
+                // 如果今天落在這個區間，就是「本週課程」
+                if (today >= startDate && today <= endDate) {
+                    matchedCard = card;
+                    matchedMonth = card.getAttribute('data-month');
+                }
+            }
+        });
+
+        // 成功配對到本週卡片，自動高亮與滾動
+        if (matchedCard) {
+            filterMonth(matchedMonth);
+
+            matchedCard.classList.add('active-week-highlight');
+            const badge = matchedCard.querySelector('.active-badge');
+            if (badge) {
+                badge.classList.remove('hidden');
+            }
+
+            // 平滑滾動到該卡片位置
+            setTimeout(() => {
+                matchedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 600);
+        } else {
+            filterMonth('all');
+        }
+    }
 </script>
 
 </body>
