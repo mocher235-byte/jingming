@@ -23,7 +23,7 @@
     </noscript>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=400;700;900&display=swap');
         
         body {
             font-family: 'Noto Sans TC', sans-serif;
@@ -182,7 +182,7 @@
                     </div>
                 </div>
 
-                <!-- 歷年入學考平均分數區 (模糊化防護, 參考自 S__24797204.jpg 與 image_74ae79.png) -->
+                <!-- 歷年入學考平均分數區 (模糊化防護) -->
                 <div class="bg-slate-50 rounded-3xl p-6 border-2 border-slate-200/80 shadow-inner max-w-4xl mx-auto text-left mb-16 relative overflow-hidden">
                     <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b-2 border-slate-200 pb-4 mb-6 gap-3">
                         <div>
@@ -295,7 +295,7 @@
                             </table>
                         </div>
 
-                        <!-- 浮動加 LINE 解鎖卡片 (覆蓋在模糊表格上方) -->
+                        <!-- 浮動加 LINE 解鎖卡片 -->
                         <div class="absolute inset-0 bg-white/40 backdrop-blur-[1px] flex flex-col items-center justify-center p-4 text-center">
                             <div class="bg-white/95 border-4 border-green-500 rounded-3xl p-6 md:p-8 max-w-lg shadow-2xl space-y-4 transform scale-95 md:scale-100 transition-all">
                                 <div class="flex items-center justify-center gap-2">
@@ -355,8 +355,7 @@
                 <div class="text-slate-700 text-lg leading-relaxed space-y-6">
                     <p class="font-medium indent-8">
                         年度國中會考榜單揭曉，再度引起家長高度熱議！新竹指標型代表品牌「金名文理補習班」再創驚人神話：
-                        在考取難度極高的**全國前 15 名會考超級菁英中，僅僅金名一間補習班便強勢斬獲 8 個席次！** 
-                        如此強悍的榜首霸屏之勢，吸引許多家長爭相前來報名。
+                        在考取難度極高的**全國前 15 名會考超級菁英中，僅僅金名一間補習班便強勢斬獲 8 個席次！** 如此強悍的榜首霸屏之勢，吸引許多家長爭相前來報名。
                     </p>
 
                     <div class="bg-slate-50 border-l-8 border-slate-800 p-6 my-6 rounded-r-2xl">
@@ -585,7 +584,7 @@
                         </div>
                     </div>
                     <span id="system-date-badge" class="bg-blue-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-md animate-pulse">
-                        2026-06-26
+                        取得日期中...
                     </span>
                 </div>
 
@@ -616,7 +615,7 @@
                     </div>
                 </div>
 
-                <!-- 直式格式課程列表（限縮 max-w-2xl 精緻寬度，重現 image_7439f2.png 與 image_72dfe1.png 直向排版） -->
+                <!-- 直式格式課程列表 -->
                 <div class="max-w-2xl mx-auto space-y-10">
 
                     <!-- 第一週 5/9 -->
@@ -763,7 +762,7 @@
                     </div>
 
                     <!-- 第七週 6/27 -->
-                    <div id="target-week-current" class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-20" data-end="2026-06-30">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-20" data-end="2026-06-30">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 6/27 (六)
@@ -1360,10 +1359,10 @@
 
     // 瀏覽日期智慧定位與高亮
     window.onload = function() {
-        // 取得目前的真實時間 (或本模擬設定之 2026-06-26)
-        const today = new Date("2026-06-26T00:00:00"); 
+        // 使用真實系統時間，取代原先寫死的模擬時間
+        const today = new Date(); 
         
-        // 格式化輸出到小幫手面板
+        // 格式化輸出到小幫手面板 (格式: YYYY-MM-DD)
         const yyyy = today.getFullYear();
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const dd = String(today.getDate()).padStart(2, '0');
@@ -1375,7 +1374,7 @@
         }
 
         let matchedCard = null;
-        let matchedMonth = '6'; // 預設找不到時在 6 月
+        let matchedMonth = String(today.getMonth() + 1); // 預設使用真實月份
 
         // 掃描每張卡片的日期範圍 (data-start 至 data-end)
         const cards = document.querySelectorAll('.curriculum-week-card');
@@ -1395,7 +1394,7 @@
             }
         });
 
-        // 成功配對到本週卡片，自動高亮與滾動
+        // 成功配對到當週卡片，自動篩選月份、高亮與滾動
         if (matchedCard) {
             filterMonth(matchedMonth);
 
@@ -1410,6 +1409,7 @@
                 matchedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 600);
         } else {
+            // 如果當前真實日期不在 May ~ Oct 課程範圍內，則預設「顯示全部」
             filterMonth('all');
         }
     }
