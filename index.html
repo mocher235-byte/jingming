@@ -105,7 +105,7 @@
         .active-week-highlight {
             animation: border-rainbow 3s infinite;
             border-width: 4px !important;
-            transform: scale(1.01);
+            transform: scale(1.02);
         }
 
         /* 隱藏原生滾動條 */
@@ -123,6 +123,9 @@
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
         <div class="sunburst"></div>
     </div>
+
+    <!-- 輕量化自訂通知元件 (Toast) -->
+    <div id="toast-container" class="fixed top-6 right-6 z-[9999] flex flex-col gap-3 pointer-events-none"></div>
 
     <!-- 懸浮聯繫按鈕 -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
@@ -156,7 +159,6 @@
 
         <div class="p-6 md:p-12">
             
-            <!-- 數據分析區 -->
             <div class="mb-12 text-center">
                 <div class="inline-block bg-blue-50 border-l-8 border-blue-500 p-4 mb-8 rounded-r-xl">
                     <p class="text-blue-800 text-xl font-bold">115年 國一曙光新生入學考 數據分析</p>
@@ -208,7 +210,6 @@
                                         <th class="py-3 px-2 text-slate-500">報考規模</th>
                                     </tr>
                                 </thead>
-                                <!-- tbody 套用模糊遮罩 class，使家長無法看清明確數字 -->
                                 <tbody class="divide-y divide-slate-200 bg-white font-bold text-sm blur-[6px] select-none pointer-events-none">
                                     <tr class="hover:bg-slate-50/80">
                                         <td class="py-3 px-2 bg-slate-100/50">110年</td>
@@ -574,18 +575,29 @@
                     <p class="text-gray-500 font-bold">精準進度安排，打造最強升學實力</p>
                 </div>
 
-                <!-- 貼心小幫手提示 -->
-                <div class="max-w-2xl mx-auto mb-6 bg-blue-50/70 border border-blue-200 text-blue-800 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-inner">
-                    <div class="flex items-center gap-2">
-                        <span class="text-2xl">📅</span>
+                <!-- 貼心小幫手提示：全新進化為 SmartSync 面板 -->
+                <div class="max-w-2xl mx-auto mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 text-blue-900 p-5 rounded-3xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-lg backdrop-blur-md">
+                    <div class="flex items-start gap-3.5">
+                        <div class="bg-blue-600 text-white p-2.5 rounded-2xl shadow-md mt-1 md:mt-0 flex-shrink-0 animate-pulse">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
                         <div>
-                            <p class="text-base font-black">系統智慧日期偵測中</p>
-                            <p class="text-xs text-blue-600 font-medium">已根據您的瀏覽時間，自動切換至本月並為您聚焦目前進度！</p>
+                            <p class="text-lg font-black text-slate-800 flex items-center gap-2">
+                                Jing-Ming SmartSync v2.0 智慧排程系統
+                            </p>
+                            <p id="helper-status-text" class="text-sm text-slate-600 font-semibold mt-1 leading-relaxed">
+                                正在自動掃描目前的日曆週期...
+                            </p>
                         </div>
                     </div>
-                    <span id="system-date-badge" class="bg-blue-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-md animate-pulse">
-                        取得日期中...
-                    </span>
+                    <div class="flex flex-col items-end gap-1 flex-shrink-0 w-full md:w-auto">
+                        <span id="system-date-badge" class="bg-blue-600 text-white text-xs font-black px-4 py-2 rounded-full shadow-md tracking-wider">
+                            取得日期中...
+                        </span>
+                        <span class="text-[10px] text-slate-400 font-bold">完美對接 • 無縫過渡</span>
+                    </div>
                 </div>
 
                 <!-- 月份分頁控制按鈕 -->
@@ -615,13 +627,17 @@
                     </div>
                 </div>
 
-                <!-- 直式格式課程列表 -->
+                <!-- 直式格式課程列表 - 全面導入「智慧週次區間 (前週日00:00:00 至 當週六23:59:59)」以及「休課平滑向後過渡」 -->
                 <div class="max-w-2xl mx-auto space-y-10">
 
                     <!-- 第一週 5/9 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-01" data-end="2026-05-12">
+                    <!-- 5/9 的偵測起點設為期初，截止到開課週六當天 -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-01" data-end="2026-05-09">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
-                            <span class="text-2xl font-black text-blue-800">5/9 (六) 正式開課</span>
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                5/9 (六) 正式開課
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
                             <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第一週</span>
                         </div>
                         <div class="space-y-4">
@@ -641,15 +657,18 @@
                     </div>
 
                     <!-- 第二週 5/16 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-13" data-end="2026-05-19">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-10" data-end="2026-05-16">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
-                            <span class="text-2xl font-black text-blue-800">5/16 (六)</span>
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                5/16 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
                             <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第二週</span>
                         </div>
                         <div class="space-y-4">
                             <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
                                 <p class="text-[#b45309] font-black text-lg mb-1">國語：常識 & 國學</p>
-                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全1 / 文學常識1</p>
+                                <p class="text-[#d97706] font-bold text-base">精準修辭技巧大全2 / 文學常識2</p>
                             </div>
                             <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
                                 <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級上學期</p>
@@ -674,9 +693,12 @@
                     </div>
 
                     <!-- 第三週 5/23 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-20" data-end="2026-05-26">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-17" data-end="2026-05-23">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
-                            <span class="text-2xl font-black text-blue-800">5/23 (六)</span>
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                5/23 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
                             <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第三週</span>
                         </div>
                         <div class="space-y-4">
@@ -696,9 +718,12 @@
                     </div>
 
                     <!-- 第四週 5/30 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-27" data-end="2026-06-02">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="5" data-start="2026-05-24" data-end="2026-05-30">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
-                            <span class="text-2xl font-black text-blue-800">5/30 (六)</span>
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                5/30 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
                             <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第四週</span>
                         </div>
                         <div class="space-y-4">
@@ -718,9 +743,12 @@
                     </div>
 
                     <!-- 第五週 6/6 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-03" data-end="2026-06-09">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-05-31" data-end="2026-06-06">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
-                            <span class="text-2xl font-black text-blue-800">6/6 (六)</span>
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                6/6 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
                             <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第五週</span>
                         </div>
                         <div class="space-y-4">
@@ -740,9 +768,12 @@
                     </div>
 
                     <!-- 第六週 6/13 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-10" data-end="2026-06-19">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-07" data-end="2026-06-13">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
-                            <span class="text-2xl font-black text-blue-800">6/13 (六)</span>
+                            <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                6/13 (六)
+                                <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                            </span>
                             <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第六週</span>
                         </div>
                         <div class="space-y-4">
@@ -762,7 +793,9 @@
                     </div>
 
                     <!-- 第七週 6/27 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-20" data-end="2026-06-30">
+                    <!-- 💡【跳過週平滑自動過渡】：6/20 (六) 為休課時段。
+                         第七週的偵測區間往前延伸至 6/14 (日) 開始，只要家長在此期間造訪，系統皆會完美鎖定、平滑過渡到 6/27 課程！ -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="6" data-start="2026-06-14" data-end="2026-06-27">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 6/27 (六)
@@ -787,7 +820,7 @@
                     </div>
 
                     <!-- 第八週 7/4 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-01" data-end="2026-07-07">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-06-28" data-end="2026-07-04">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 7/4 (六)
@@ -812,7 +845,9 @@
                     </div>
 
                     <!-- 第九週 7/11 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-08" data-end="2026-07-14">
+                    <!-- 💡【智慧週次區間示範例】：今天如果是 2026-07-07 (二)，在新區間 7/5 (日) ~ 7/11 (六) 下，
+                         系統會精準辨別，並帶領家長切換到 7月份 分頁、高亮且平滑對齊到本張卡片中，徹底排除舊有顯示盲區！ -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-05" data-end="2026-07-11">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 7/11 (六)
@@ -837,7 +872,7 @@
                     </div>
 
                     <!-- 第十週 7/18 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-15" data-end="2026-07-21">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-12" data-end="2026-07-18">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 7/18 (六)
@@ -862,7 +897,7 @@
                     </div>
 
                     <!-- 第十一週 7/25 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-22" data-end="2026-07-28">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="7" data-start="2026-07-19" data-end="2026-07-25">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 7/25 (六)
@@ -887,7 +922,7 @@
                     </div>
 
                     <!-- 第十二週 8/1 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-07-29" data-end="2026-08-04">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-07-26" data-end="2026-08-01">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 8/01 (六)
@@ -912,7 +947,7 @@
                     </div>
 
                     <!-- 第十三週 8/8 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-05" data-end="2026-08-11">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-02" data-end="2026-08-08">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 8/08 (六)
@@ -937,7 +972,7 @@
                     </div>
 
                     <!-- 第十四週 8/15 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-12" data-end="2026-08-18">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-09" data-end="2026-08-15">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 8/15 (六)
@@ -962,7 +997,7 @@
                     </div>
 
                     <!-- 第十五週 8/22 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-19" data-end="2026-08-25">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-16" data-end="2026-08-22">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 8/22 (六)
@@ -987,7 +1022,7 @@
                     </div>
 
                     <!-- 第十六週 8/29 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-26" data-end="2026-09-01">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="8" data-start="2026-08-23" data-end="2026-08-29">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 8/29 (六)
@@ -1012,7 +1047,7 @@
                     </div>
 
                     <!-- 第十七週 9/05 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-02" data-end="2026-09-08">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-08-30" data-end="2026-09-05">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 9/05 (六)
@@ -1037,7 +1072,7 @@
                     </div>
 
                     <!-- 第十八週 9/12 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-09" data-end="2026-09-15">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-06" data-end="2026-09-12">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 9/12 (六)
@@ -1062,7 +1097,7 @@
                     </div>
 
                     <!-- 第十九週 9/19 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-16" data-end="2026-09-25">
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="9" data-start="2026-09-13" data-end="2026-09-19">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 9/19 (六)
@@ -1087,7 +1122,9 @@
                     </div>
 
                     <!-- 第二十週 10/3 -->
-                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="10" data-start="2026-09-26" data-end="2026-10-15">
+                    <!-- 💡【跳過週平滑自動過渡】：9/26 (六) 為休課時段。
+                         第二十週的偵測區間往前延伸至 9/20 (日) 開始，只要家長在此期間造訪，系統皆會完美鎖定、平滑過渡到 10/3 課程！ -->
+                    <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="10" data-start="2026-09-20" data-end="2026-10-03">
                         <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                             <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                 10/03 (六)
@@ -1105,8 +1142,8 @@
                                 <p class="text-[#e11d48] font-bold text-base">10. 生活中的大單位</p>
                             </div>
                             <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
-                                <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
-                                <p class="text-[#15803d] font-bold text-base">文法 19：動名詞</p>
+                                <p class="text-[#166534] font-black text-lg mb-1">英文：動名詞</p>
+                                <p class="text-[#15803d] font-bold text-base">文法 19：動名詞的關鍵考點</p>
                             </div>
                         </div>
                     </div>
@@ -1280,6 +1317,49 @@
     </div>
 
 <script>
+    // 💡 自訂 Toast 提醒元件，全面取代危險的原生 alert()
+    function showToast(message, type = 'info') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        
+        const toast = document.createElement('div');
+        // 增加滑順動畫、磨砂毛玻璃以及陰影
+        toast.className = `pointer-events-auto flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl border-2 transform translate-y-4 opacity-0 transition-all duration-300 max-w-sm backdrop-blur-md`;
+        
+        let icon = '💡';
+        if (type === 'success') {
+            toast.className += ' bg-emerald-50/95 border-emerald-200 text-emerald-900';
+            icon = '✅';
+        } else if (type === 'error') {
+            toast.className += ' bg-rose-50/95 border-rose-200 text-rose-900';
+            icon = '❌';
+        } else {
+            toast.className += ' bg-blue-50/95 border-blue-200 text-blue-900';
+            icon = 'ℹ️';
+        }
+        
+        toast.innerHTML = `
+            <span class="text-2xl">${icon}</span>
+            <div class="flex-grow font-black text-sm leading-relaxed">${message}</div>
+            <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-slate-600 font-black ml-2 text-lg">✕</button>
+        `;
+        
+        container.appendChild(toast);
+        
+        // 觸發進場動畫
+        setTimeout(() => {
+            toast.classList.remove('translate-y-4', 'opacity-0');
+        }, 10);
+        
+        // 4秒後自動退場並移除
+        setTimeout(() => {
+            toast.classList.add('translate-y-4', 'opacity-0');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 4000);
+    }
+
     const form = document.getElementById("enrollForm");
     const successBox = document.getElementById("successMsg");
     const submitBtn = document.getElementById("submitBtn");
@@ -1306,17 +1386,18 @@
                 form.classList.add('hidden');
                 successBox.classList.remove('hidden');
                 successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                showToast("預約資料已成功送出！專業顧問將盡速與您聯繫。", "success");
             } else {
                 response.json().then(data => {
                     if (Object.hasOwn(data, 'errors')) {
-                        alert(data["errors"].map(error => error["message"]).join(", "));
+                        showToast(data["errors"].map(error => error["message"]).join(", "), "error");
                     } else {
-                        alert("抱歉，發生錯誤，請撥打電話 03-6562900 聯繫我們。");
+                        showToast("抱歉，發生錯誤，請撥打電話 03-6562900 聯繫我們。", "error");
                     }
                 })
             }
         }).catch(error => {
-            alert("網路連線異常，請稍後再試。");
+            showToast("網路連線異常，請稍後再試。", "error");
         }).finally(() => {
             submitBtn.disabled = false;
             submitBtn.innerText = "送出資料，預約專業諮詢";
@@ -1357,16 +1438,17 @@
         });
     }
 
-    // 瀏覽日期智慧定位與高亮
+    // 智慧定位與自動過渡
     window.onload = function() {
-        // 使用真實系統時間，取代原先寫死的模擬時間
         const today = new Date(); 
         
-        // 格式化輸出到小幫手面板 (格式: YYYY-MM-DD)
+        // 格式化輸出到小幫手面板 (格式: YYYY-MM-DD (星期))
         const yyyy = today.getFullYear();
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const dd = String(today.getDate()).padStart(2, '0');
-        const formattedDate = `${yyyy}-${mm}-${dd}`;
+        const daysOfWeek = ['日', '一', '二', '三', '四', '五', '六'];
+        const dayOfWeekStr = daysOfWeek[today.getDay()];
+        const formattedDate = `${yyyy}-${mm}-${dd} (${dayOfWeekStr})`;
         
         const dateBadge = document.getElementById('system-date-badge');
         if (dateBadge) {
@@ -1374,7 +1456,7 @@
         }
 
         let matchedCard = null;
-        let matchedMonth = String(today.getMonth() + 1); // 預設使用真實月份
+        let matchedMonth = String(today.getMonth() + 1);
 
         // 掃描每張卡片的日期範圍 (data-start 至 data-end)
         const cards = document.querySelectorAll('.curriculum-week-card');
@@ -1383,16 +1465,19 @@
             const endStr = card.getAttribute('data-end');
             
             if (startStr && endStr) {
+                // 將偵測起訖點設定為 "前週日 00:00:00 至 當週六 23:59:59"
                 const startDate = new Date(startStr + "T00:00:00");
                 const endDate = new Date(endStr + "T23:59:59");
                 
-                // 如果今天落在這個區間，就是「本週課程」
+                // 如果今天落在這個區間，就是「本週即將開始的特訓」
                 if (today >= startDate && today <= endDate) {
                     matchedCard = card;
                     matchedMonth = card.getAttribute('data-month');
                 }
             }
         });
+
+        const helperStatusText = document.getElementById('helper-status-text');
 
         // 成功配對到當週卡片，自動篩選月份、高亮與滾動
         if (matchedCard) {
@@ -1404,13 +1489,27 @@
                 badge.classList.remove('hidden');
             }
 
+            // 更新智慧排程面板
+            const weekNumberStr = matchedCard.querySelector('.bg-\\[\\#4a5568\\]')?.innerText || '本週';
+            const weekTitleStr = matchedCard.querySelector('.text-2xl')?.innerText.replace('📍 本週課程', '').trim() || '';
+
+            if (helperStatusText) {
+                helperStatusText.innerHTML = `已為您精準鎖定 <strong>${matchedMonth}月份</strong> 進度，高亮並平滑對焦至 <strong>${weekNumberStr}：${weekTitleStr}</strong> 課程！`;
+            }
+
+            // 觸發自訂 Toast 通知家長
+            showToast(`已為您自動切換至 ${matchedMonth} 月份，聚焦【${weekNumberStr}】特訓課程。`, "success");
+
             // 平滑滾動到該卡片位置
             setTimeout(() => {
                 matchedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 600);
         } else {
-            // 如果當前真實日期不在 May ~ Oct 課程範圍內，則預設「顯示全部」
+            // 如果當前真實日期不在課程範圍內，預設「顯示全部」
             filterMonth('all');
+            if (helperStatusText) {
+                helperStatusText.innerText = '當前不在特訓班開課期間，已為您顯示所有週次進度。';
+            }
         }
     }
 </script>
