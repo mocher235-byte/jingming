@@ -24,7 +24,7 @@
     </noscript>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
         
         body {
             font-family: 'Noto Sans TC', sans-serif;
@@ -163,7 +163,7 @@
 
         <div class="p-6 md:p-12">
             
-            <!-- 新增：中年級專屬特訓班重磅公告卡片 -->
+            <!-- 中年級專屬特訓班公告卡片 -->
             <div id="middle-school-notice" class="mb-12 bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900 text-white rounded-3xl p-6 md:p-10 shadow-2xl border-4 border-yellow-400 relative overflow-hidden">
                 <div class="absolute top-0 right-0 bg-yellow-400 text-purple-950 font-black px-6 py-2 rounded-bl-3xl text-sm md:text-base tracking-wider shadow-md">
                     全新開班 • 熱烈報名中
@@ -201,11 +201,11 @@
 
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="text-yellow-300 font-bold text-sm md:text-base">
-                        ⚡ 名額有限！建議提早預約卡位，掌握中年級黃金黃金超車期！
+                        ⚡ 名額有限！建議提早預約卡位，掌握中年級黃金超車期！
                     </div>
-                    <a href="#middle-grade-curriculum" class="w-full sm:w-auto text-center bg-yellow-400 hover:bg-yellow-300 text-purple-950 font-black px-8 py-3.5 rounded-full text-lg shadow-xl hover:scale-105 transition transform">
+                    <button onclick="switchClassTab('middle'); document.getElementById('curriculum-section').scrollIntoView({behavior:'smooth'});" class="w-full sm:w-auto text-center bg-yellow-400 hover:bg-yellow-300 text-purple-950 font-black px-8 py-3.5 rounded-full text-lg shadow-xl hover:scale-105 transition transform">
                         查看中年級完整課表 ➔
-                    </a>
+                    </button>
                 </div>
             </div>
             
@@ -246,7 +246,6 @@
                         <span class="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">家長最推薦！備考指引</span>
                     </div>
 
-                    <!-- 帶有模糊效果與加LINE解鎖提示的表格容器 -->
                     <div class="relative rounded-2xl border border-slate-200 shadow-sm overflow-hidden bg-white">
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm text-center text-slate-700">
@@ -358,7 +357,7 @@
                                     為保障資訊精準度並維護歷屆學員成長隱私，歷年完整落點平均分數與報考人數統計報告，已移至金名 LINE 官方系統！
                                 </p>
                                 <div class="bg-green-50 border border-green-100 text-green-800 p-3 rounded-xl font-bold text-xs md:text-sm">
-                                    👉 條例加入 LINE 並發送「<span class="text-red-600 font-black">曙光大數據</span>」，即可自動免費獲取清晰無遮蔽大圖與落點分析分析表！
+                                    👉 加入 LINE 並發送「<span class="text-red-600 font-black">曙光大數據</span>」，即可自動免費獲取清晰無遮蔽大圖與落點分析表！
                                 </div>
                                 <a href="https://line.me/ti/p/vQcf6cONnl" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#06c755] hover:bg-[#05b04b] text-white font-black py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-green-200 transition-all transform hover:scale-105">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -495,7 +494,7 @@
 
                         <div class="mt-8">
                             <a href="https://mocher235-byte.github.io/english/index.html" target="_blank" class="flex items-center justify-center gap-3 bg-red-600 text-white w-full py-5 rounded-full text-2xl font-black hover:bg-red-700 transition-all shadow-xl hover:shadow-red-200 group">
-                                條例體驗英文試閱 
+                                立即體驗英文試閱 
                                 <span class="group-hover:translate-x-2 transition-transform">➔</span>
                             </a>
                         </div>
@@ -516,10 +515,9 @@
 
                         <div class="flex-grow space-y-6">
                             <p class="text-gray-700 text-xl leading-relaxed font-medium">
-                                運用科技輔助教學，金名教師團隊開發的「魔法學院」入口網，提供數位化的優質學習 resources。
+                                運用科技輔助教學，金名教師團隊開發的「魔法學院」入口網，提供數位化的優質學習資源。
                             </p>
                             
-                            <!-- 獎勵標語方塊 -->
                             <div class="bg-blue-50/80 border-l-8 border-blue-600 p-6 rounded-3xl shadow-sm">
                                 <p class="text-blue-800 font-black text-xl flex items-center gap-3">
                                     <span class="text-2xl animate-pulse">✨</span> 認真讀書可以領取高額的獎學金或寶石卡！
@@ -662,7 +660,7 @@
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-blue-600 font-black">✦</span>
-                                <div><strong class="text-blue-900">校校電話：</strong><a href="tel:036560002" class="text-blue-600 underline">03-6560002</a> (創立於 2011 年)</div>
+                                <div><strong class="text-blue-900">校區電話：</strong><a href="tel:036560002" class="text-blue-600 underline">03-6560002</a> (創立於 2011 年)</div>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-blue-600 font-black">✦</span>
@@ -1236,6 +1234,31 @@
                             </div>
                         </div>
 
+                        <!-- 第二十一週 10/31 (新增) -->
+                        <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="10" data-start="2026-10-18" data-end="2026-10-31">
+                            <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
+                                <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
+                                    10/31 (六)
+                                    <span class="active-badge hidden bg-amber-500 text-white text-xs px-2 py-0.5 rounded-md animate-bounce">📍 本週課程</span>
+                                </span>
+                                <span class="bg-[#4a5568] text-white px-4 py-1 rounded-full text-xs font-black tracking-wider shadow-sm">第二十一週</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-[#fff8e7] p-5 rounded-2xl shadow-sm border border-amber-100">
+                                    <p class="text-[#b45309] font-black text-lg mb-1">國語：字形辨析</p>
+                                    <p class="text-[#d97706] font-bold text-base">形近字、同音易錯字</p>
+                                </div>
+                                <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期</p>
+                                    <p class="text-[#e11d48] font-bold text-base">1. 最大公因數和最小公倍數</p>
+                                </div>
+                                <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
+                                    <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
+                                    <p class="text-[#15803d] font-bold text-base">文法 20：不定詞與虛主詞it</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -1348,7 +1371,6 @@
                                     <p class="text-purple-700 font-bold text-base">認識毫米</p>
                                 </div>
                                 <div class="bg-purple-50 p-4 rounded-2xl border border-purple-100">
-                                    <p class="text-purple-900 font-black text-sm mb-1">主題二</p>
                                     <p class="text-purple-700 font-bold text-base">公分、毫米的關係和換算</p>
                                 </div>
                                 <div class="bg-purple-50 p-4 rounded-2xl border border-purple-100">
@@ -1421,6 +1443,82 @@
                                     <p class="text-purple-900 font-black text-sm mb-1">主題四</p>
                                     <p class="text-purple-700 font-bold text-base">正方形與長方形的邊和角</p>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- 11/01 (日) (新增) -->
+                        <div class="middle-week-card border-4 border-purple-200 rounded-[2rem] p-6 shadow-lg bg-white relative overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                            <div class="bg-purple-900 text-white px-6 py-2 -mx-6 -mt-6 mb-5 flex items-center justify-between">
+                                <span class="font-black text-xl md:text-2xl flex items-center gap-2">
+                                    <span>🗓️</span> 11/01 (日) 09:00~12:00
+                                </span>
+                                <span class="bg-yellow-400 text-purple-950 px-3 py-1 rounded-full text-xs font-black">三上進度</span>
+                            </div>
+                            
+                            <h4 class="text-2xl font-black text-purple-900 mb-4 pb-2 border-b-2 border-purple-100 flex items-center gap-2">
+                                <span>🔹</span> 三上6 面積
+                            </h4>
+
+                            <div class="bg-purple-50 p-5 rounded-2xl border border-purple-100">
+                                <p class="text-purple-900 font-black text-base mb-1">單元重點</p>
+                                <p class="text-purple-700 font-bold text-lg">面積的認識、平方公分概念與圖形面積比較計算</p>
+                            </div>
+                        </div>
+
+                        <!-- 11/08 (日) (新增) -->
+                        <div class="middle-week-card border-4 border-purple-200 rounded-[2rem] p-6 shadow-lg bg-white relative overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                            <div class="bg-purple-900 text-white px-6 py-2 -mx-6 -mt-6 mb-5 flex items-center justify-between">
+                                <span class="font-black text-xl md:text-2xl flex items-center gap-2">
+                                    <span>🗓️</span> 11/08 (日) 09:00~12:00
+                                </span>
+                                <span class="bg-yellow-400 text-purple-950 px-3 py-1 rounded-full text-xs font-black">三上進度</span>
+                            </div>
+                            
+                            <h4 class="text-2xl font-black text-purple-900 mb-4 pb-2 border-b-2 border-purple-100 flex items-center gap-2">
+                                <span>🔹</span> 三上7-除法
+                            </h4>
+
+                            <div class="bg-purple-50 p-5 rounded-2xl border border-purple-100">
+                                <p class="text-purple-900 font-black text-base mb-1">單元重點</p>
+                                <p class="text-purple-700 font-bold text-lg">平分概念、除法直式計算與有餘數的除法應用</p>
+                            </div>
+                        </div>
+
+                        <!-- 11/22 (日) (新增) -->
+                        <div class="middle-week-card border-4 border-purple-200 rounded-[2rem] p-6 shadow-lg bg-white relative overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                            <div class="bg-purple-900 text-white px-6 py-2 -mx-6 -mt-6 mb-5 flex items-center justify-between">
+                                <span class="font-black text-xl md:text-2xl flex items-center gap-2">
+                                    <span>🗓️</span> 11/22 (日) 09:00~12:00
+                                </span>
+                                <span class="bg-yellow-400 text-purple-950 px-3 py-1 rounded-full text-xs font-black">三上進度</span>
+                            </div>
+                            
+                            <h4 class="text-2xl font-black text-purple-900 mb-4 pb-2 border-b-2 border-purple-100 flex items-center gap-2">
+                                <span>🔹</span> 三上8 公升和毫升
+                            </h4>
+
+                            <div class="bg-purple-50 p-5 rounded-2xl border border-purple-100">
+                                <p class="text-purple-900 font-black text-base mb-1">單元重點</p>
+                                <p class="text-purple-700 font-bold text-lg">容量單位認識、公升與毫升的換算及複名數加減計算</p>
+                            </div>
+                        </div>
+
+                        <!-- 11/29 (日) (新增) -->
+                        <div class="middle-week-card border-4 border-purple-200 rounded-[2rem] p-6 shadow-lg bg-white relative overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                            <div class="bg-purple-900 text-white px-6 py-2 -mx-6 -mt-6 mb-5 flex items-center justify-between">
+                                <span class="font-black text-xl md:text-2xl flex items-center gap-2">
+                                    <span>🗓️</span> 11/29 (日) 09:00~12:00
+                                </span>
+                                <span class="bg-yellow-400 text-purple-950 px-3 py-1 rounded-full text-xs font-black">三上進度</span>
+                            </div>
+                            
+                            <h4 class="text-2xl font-black text-purple-900 mb-4 pb-2 border-b-2 border-purple-100 flex items-center gap-2">
+                                <span>🔹</span> 三上9 分數
+                            </h4>
+
+                            <div class="bg-purple-50 p-5 rounded-2xl border border-purple-100">
+                                <p class="text-purple-900 font-black text-base mb-1">單元重點</p>
+                                <p class="text-purple-700 font-bold text-lg">幾分之幾、分數數詞、同分母分數大小比較與應用</p>
                             </div>
                         </div>
 
@@ -1582,7 +1680,7 @@
                     <a href="https://mocher235-byte.github.io/new/" target="_blank" class="course-link-card p-6 rounded-3xl bg-gray-50 shadow-sm flex flex-col items-center text-center">
                         <span class="text-4xl mb-3">🎒</span>
                         <h4 class="text-xl font-black text-gray-800 mb-2">升小一新生</h4>
-                        <span class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold">條例預約</span>
+                        <span class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold">預約體驗</span>
                     </a>
                     <a href="https://mocher235-byte.github.io/apple/" target="_blank" class="course-link-card p-6 rounded-3xl bg-gray-50 shadow-sm flex flex-col items-center text-center">
                         <span class="text-4xl mb-3">🍎</span>
@@ -1591,8 +1689,8 @@
                     </a>
                     <a href="https://mocher235-byte.github.io/kidsabc/" target="_blank" class="course-link-card p-6 rounded-3xl bg-gray-50 shadow-sm flex flex-col items-center text-center">
                         <span class="text-4xl mb-3">🧸</span>
-                        <h4 class="text-xl font-black text-gray-800 mb-2">幼兒美語啟盟班</h4>
-                        <span class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold">啟盟對話</span>
+                        <h4 class="text-xl font-black text-gray-800 mb-2">幼兒美語啟蒙班</h4>
+                        <span class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold">啟蒙對話</span>
                     </a>
                     <a href="https://mocher235-byte.github.io/summer/" target="_blank" class="course-link-card p-6 rounded-3xl bg-gray-50 shadow-sm flex flex-col items-center text-center">
                         <span class="text-4xl mb-3">🏖️</span>
@@ -1659,7 +1757,7 @@
     </div>
 
 <script>
-    // 💡 自訂 Toast 提醒元件，全面取代危險的原生 alert()
+    // 自訂 Toast 提醒元件
     function showToast(message, type = 'info') {
         const container = document.getElementById('toast-container');
         if (!container) return;
@@ -1732,7 +1830,7 @@
                     if (Object.hasOwn(data, 'errors')) {
                         showToast(data["errors"].map(error => error["message"]).join(", "), "error");
                     } else {
-                        showToast("抱歉，發生錯誤，請撥打電話 03-6562900 聯繫我們。", "error");
+                        showToast("抱歉，發生錯誤，請撥打電話 03-6560002 聯繫我們。", "error");
                     }
                 })
             }
