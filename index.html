@@ -660,7 +660,9 @@
                             <span id="system-date-badge" class="bg-blue-600 text-white text-xs font-black px-4 py-2 rounded-full shadow-md tracking-wider">
                                 取得日期中...
                             </span>
-                            <span class="text-[10px] text-slate-400 font-bold">週六全科特訓進度</span>
+                            <button id="jump-to-current-btn" onclick="jumpToCurrentWeek()" class="hidden text-xs bg-amber-400 hover:bg-amber-300 text-slate-900 font-black px-3 py-1.5 rounded-full shadow transition-all transform hover:scale-105 flex items-center gap-1 mt-1">
+                                <span>📍</span> 回到本週進度
+                            </button>
                         </div>
                     </div>
 
@@ -1222,7 +1224,7 @@
                             </div>
                         </div>
 
-                        <!-- 第二十一週 10/31 -->
+                        <!-- 第二十一週 10/31 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="10" data-start="2026-10-18" data-end="2026-10-31">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1237,8 +1239,8 @@
                                     <p class="text-[#d97706] font-bold text-base">形近字、同音易錯字</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級 第 1 單元 整數四則</p>
-                                    <p class="text-[#e11d48] font-bold text-base">交換律與結合律、乘法對加(減)法的分配律、除法對加(減)法的分配律、四則運算法則</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 1 單元 最大公因數與最小公倍數</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 質數和合數<br>• 質因數和質因數分解<br>• 最大公因數<br>• 最小公倍數</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：文法篇</p>
@@ -1247,7 +1249,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/11/7 -->
+                        <!-- 2026/11/7 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="11" data-start="2026-11-01" data-end="2026-11-07">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1262,8 +1264,8 @@
                                     <p class="text-[#d97706] font-bold text-base">多音字、易混淆字音</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級 第 2 單元 因數與倍數</p>
-                                    <p class="text-[#e11d48] font-bold text-base">奇偶數、因數與倍數、倍數的判斷、質數、合數、質因數、質因數分解</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 2 單元 分數除法</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 最簡分數<br>• 同分母分數的除法<br>• 異分母分數的除法<br>• 分數除法的應用<br>• 被除數、除數和商的關係</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 3 休閒</p>
@@ -1272,7 +1274,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/11/14 -->
+                        <!-- 2026/11/14 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="11" data-start="2026-11-08" data-end="2026-11-14">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1287,8 +1289,8 @@
                                     <p class="text-[#d97706] font-bold text-base">多義字、顏色相關字</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級 第 3 單元 長度、重量、容量與時間</p>
-                                    <p class="text-[#e11d48] font-bold text-base">長度單位、重量單位、容量單位、複名數的計算、時間的化聚</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 3 單元 數量關係</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 圖形和數形的規律<br>• 和差積商不變<br>• 間隔問題</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 4 採購食物</p>
@@ -1297,7 +1299,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/11/21 -->
+                        <!-- 2026/11/21 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="11" data-start="2026-11-15" data-end="2026-11-21">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1312,8 +1314,8 @@
                                     <p class="text-[#d97706] font-bold text-base">形音義綜合整合練習</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級 第 4 單元 四邊形</p>
-                                    <p class="text-[#e11d48] font-bold text-base">垂直與平行、四邊形的種類與特性、四邊形的包含關係、面積單位換算</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 4 單元 小數除法</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 整數÷小數<br>• 小數÷小數<br>• 小數除法的應用<br>• 被除數、除數和商的關係</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 4 採購食物</p>
@@ -1322,7 +1324,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/11/28 -->
+                        <!-- 2026/11/28 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="11" data-start="2026-11-22" data-end="2026-11-28">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1337,8 +1339,8 @@
                                     <p class="text-[#d97706] font-bold text-base">量字詞、狀態詞、連接詞、褒義詞/貶義詞、同義複詞/偏義複詞、雙聲複詞/疊韻複詞、量詞、相似詞/相反詞</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級 第 5 單元 三角形與多邊形</p>
-                                    <p class="text-[#e11d48] font-bold text-base">三角形的種類、三角形的特性、三角形的底與高面積、不規則圖形面積求法、多邊形與正多邊形、剪稱圖形</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 5 單元 比與比值</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 比與比值<br>• 相等的比<br>• 比的應用</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 4 採購食物</p>
@@ -1347,7 +1349,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/12/5 -->
+                        <!-- 2026/12/5 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="12" data-start="2026-11-29" data-end="2026-12-05">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1362,8 +1364,8 @@
                                     <p class="text-[#d97706] font-bold text-base">成語大觀、相似成語辨析、成語結構</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：五年級 第 6 單元 百分率</p>
-                                    <p class="text-[#e11d48] font-bold text-base">百分率、ppm、糖水問題、利潤問題、濃度問題</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 6 單元 圓周長與扇形周長</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 認識圓周率<br>• 圓周長<br>• 扇形周長</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 5 表現自我</p>
@@ -1372,7 +1374,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/12/12 -->
+                        <!-- 2026/12/12 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="12" data-start="2026-12-06" data-end="2026-12-12">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1387,8 +1389,8 @@
                                     <p class="text-[#d97706] font-bold text-base">借代詞語、年齡的代稱、死亡的代稱、俗諺語、歇後語、外來語、諧音雙關詞語、天干地支</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 7 單元 最大公因數與最小公倍數</p>
-                                    <p class="text-[#e11d48] font-bold text-base">公因數、最大公因數、互質、公倍數、最小公倍數、最大公因數與最小公倍數的求法、最大公因數與最小公倍數的應用</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 7 單元 圓面積與扇形面積</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 圓面積<br>• 扇形面積</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 5 表現自我</p>
@@ -1397,7 +1399,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/12/19 -->
+                        <!-- 2026/12/19 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="12" data-start="2026-12-13" data-end="2026-12-19">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1412,8 +1414,8 @@
                                     <p class="text-[#d97706] font-bold text-base">並列複句、選擇複句、承接複句、遞進複句、目的複句、因果複句、轉折複句、假設複句、條件複句</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 8 單元 分數</p>
-                                    <p class="text-[#e11d48] font-bold text-base">等值分數、約分、分數的大小比較、分數的加減、分數的乘法、分數的除法、分數四則運算</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 8 單元 認識速率</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 速率<br>• 距離、時間和速率的關係<br>• 速率單位的換算</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 5 表現自我</p>
@@ -1422,7 +1424,7 @@
                             </div>
                         </div>
 
-                        <!-- 2026/12/26 -->
+                        <!-- 2026/12/26 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="12" data-start="2026-12-20" data-end="2026-12-26">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1437,8 +1439,8 @@
                                     <p class="text-[#d97706] font-bold text-base">工具書使用法、標點符號、六書、書法、詞類、常用修辭</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 9 單元 小數與整數</p>
-                                    <p class="text-[#e11d48] font-bold text-base">小數的加減、小數的乘法、被乘數與乘數關係、小數的除法、被除數與商關係、分數小數換算、概數、除數的取法、循環小數</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期 第 9 單元 放大圖、縮圖與比例尺</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 放大圖和縮圖<br>• 繪製放大圖和縮圖<br>• 比例尺</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 6 到處走走</p>
@@ -1447,7 +1449,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/01/09 -->
+                        <!-- 2027/01/09 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="1" data-start="2027-01-01" data-end="2027-01-09">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1462,8 +1464,8 @@
                                     <p class="text-[#d97706] font-bold text-base">書信、柬帖、便條、啟事、題辭、對聯</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 10 單元 數列</p>
-                                    <p class="text-[#e11d48] font-bold text-base">等差數列、圖形規律、運算規律、空心方陣、實心方陣、利用規律求第N個數</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級上學期</p>
+                                    <p class="text-[#e11d48] font-bold text-base">六年級上學期數學檢測</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 6 到處走走</p>
@@ -1472,7 +1474,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/01/16 -->
+                        <!-- 2027/01/16 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="1" data-start="2027-01-10" data-end="2027-01-16">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1487,8 +1489,8 @@
                                     <p class="text-[#d97706] font-bold text-base">認識新詩、近體詩格律、唐詩派別與詩人、認識宋詞、詩詞中的季節、論語與孟子比較、明清的古典小說</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 11 單元 圓與扇形</p>
-                                    <p class="text-[#e11d48] font-bold text-base">圓的各項名稱、利用圓周率求圓周長、圓周求半徑、扇形的各項名稱、複合圖形的面積與周長</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期 第 1 單元 小數與分數的計算</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 小數四則計算<br>• 分數四則計算<br>• 小數與分數的混合計算<br>• 簡化計算</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 6 到處走走</p>
@@ -1512,8 +1514,8 @@
                                     <p class="text-[#d97706] font-bold text-base">詞組填填、閱讀測驗</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 12 單元 角柱與角錐的角柱</p>
-                                    <p class="text-[#e11d48] font-bold text-base">認識角柱與角錐、角柱與角錐的比較、角柱與角錐的展開圖、柱體與球關係圖、表面積</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期 第 2 單元 速率的應用</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 平均速率問題<br>• 相離和相遇問題<br>• 追趕問題<br>• 流水問題</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 7 台灣食物</p>
@@ -1537,8 +1539,8 @@
                                     <p class="text-[#d97706] font-bold text-base">模擬試題卷 • 模擬卷 1</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 13 單元 體積與容積</p>
-                                    <p class="text-[#e11d48] font-bold text-base">柱體的體積求法、柱體體積的關係、柱體與容積的關係、複合柱體體積的求法、沉入水中求體積</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期 第 3 單元 柱體體積與表面積</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 柱體的體積<br>• 複合形體的體積<br>• 柱體的表面積</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 7 台灣食物</p>
@@ -1562,8 +1564,8 @@
                                     <p class="text-[#d97706] font-bold text-base">模擬試題卷 • 模擬卷 2</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 14 單元 比和比值</p>
-                                    <p class="text-[#e11d48] font-bold text-base">比與比值、等值比、正比、反比、比例尺、縮圖或擴大圖與原圖關係</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期 第 4 單元 基準量與比較量</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 基準量與比較量<br>• 基準量與比較量的應用 (兩量之和)<br>• 基準量與比較量的應用 (兩量之差)</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 7 台灣食物</p>
@@ -1587,8 +1589,8 @@
                                     <p class="text-[#d97706] font-bold text-base">模擬試題卷 • 模擬卷 3</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 15 單元 速率(一)</p>
-                                    <p class="text-[#e11d48] font-bold text-base">時間的換算、速率、速率的公式、時速、分速與秒速的換算、平均速率</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期 第 5 單元 怎樣解題</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 和差問題<br>• 年齡問題<br>• 雞兔問題<br>• 組合問題</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 8 天氣</p>
@@ -1598,7 +1600,7 @@
                         </div>
 
                         <!-- 寒假密集特訓：2027/01/27 (三) -->
-                        <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="1" data-start="2027-01-26" data-end="2027-01-27">
+                        <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="1" data-start="2026-01-26" data-end="2027-01-27">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
                                     2027/01/27 (三)
@@ -1612,8 +1614,8 @@
                                     <p class="text-[#d97706] font-bold text-base">模擬試題卷 • 模擬卷 4</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 16 單元 速率(二)</p>
-                                    <p class="text-[#e11d48] font-bold text-base">同向反向、相背相向(相遇)、同地反向、追趕問題、流水問題、火車過橋、聲音傳遞、時鐘問題</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期 第 6 單元 圓形圖</p>
+                                    <p class="text-[#e11d48] font-bold text-base">• 圓形百分圖<br>• 圓形圖<br>• 圓形百分圖和圓形圖的應用<br>• 認識可能性</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 8 天氣</p>
@@ -1637,8 +1639,8 @@
                                     <p class="text-[#d97706] font-bold text-base">模擬試題卷 • 模擬卷 5</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 17 單元 平均數、統計圖表</p>
-                                    <p class="text-[#e11d48] font-bold text-base">算術平均數與加權平均數、平均數、中位數與眾數、統計圖表 (長條圖、圓形圖、折線圖)</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級下學期</p>
+                                    <p class="text-[#e11d48] font-bold text-base">六年級下學期數學檢測</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 8 天氣</p>
@@ -1662,8 +1664,8 @@
                                     <p class="text-[#d97706] font-bold text-base">國語科考前衝刺總複習 1</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 18 單元 應用問題(一)</p>
-                                    <p class="text-[#e11d48] font-bold text-base">和差問題、年齡問題、雞兔問題</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 1</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 9 運動</p>
@@ -1672,7 +1674,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/02/13 -->
+                        <!-- 2027/02/13 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="2" data-start="2027-02-01" data-end="2027-02-13">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1687,8 +1689,8 @@
                                     <p class="text-[#d97706] font-bold text-base">國語科考前衝刺總複習 2</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 19 單元 應用問題(二)</p>
-                                    <p class="text-[#e11d48] font-bold text-base">工程問題、分資問題、集合、對數問題、定義新運算規則、第十進位</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 2</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 9 運動</p>
@@ -1697,7 +1699,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/02/20 -->
+                        <!-- 2027/02/20 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="2" data-start="2027-02-14" data-end="2027-02-28">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1712,8 +1714,8 @@
                                     <p class="text-[#d97706] font-bold text-base">國語科考前衝刺總複習 3</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 20 單元 排列組合與機率</p>
-                                    <p class="text-[#e11d48] font-bold text-base">列表法、乘法原理、利用乘法原理求因數個數、加法原理、利用加法原理求最短路徑走法 (基準不重複)、排列、組合、機率</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 3</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 9 運動</p>
@@ -1722,7 +1724,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/03/06 -->
+                        <!-- 2027/03/06 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="3" data-start="2027-03-01" data-end="2027-03-06">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1737,8 +1739,8 @@
                                     <p class="text-[#d97706] font-bold text-base">國語科考前衝刺總複習 4</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 第 21 單元 代數</p>
-                                    <p class="text-[#e11d48] font-bold text-base">未知數、列式的方法、式子的化簡、等量公理、移項法則、應用題的解題步驟</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 4</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：閱讀篇 Unit 10 講電話</p>
@@ -1747,7 +1749,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/03/13 -->
+                        <!-- 2027/03/13 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="3" data-start="2027-03-07" data-end="2027-03-13">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1762,8 +1764,8 @@
                                     <p class="text-[#d97706] font-bold text-base">國語科考前衝刺總複習 5</p>
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
-                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：六年級 模擬訓練</p>
-                                    <p class="text-[#e11d48] font-bold text-base">全範圍綜合複習與模擬測驗</p>
+                                    <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 5</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：考前衝刺</p>
@@ -1772,7 +1774,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/03/20 -->
+                        <!-- 2027/03/20 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="3" data-start="2027-03-14" data-end="2027-03-20">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1788,7 +1790,7 @@
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
                                     <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
-                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 1</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 6</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：考前衝刺</p>
@@ -1797,7 +1799,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/03/27 -->
+                        <!-- 2027/03/27 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="3" data-start="2027-03-21" data-end="2027-03-31">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1813,7 +1815,7 @@
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
                                     <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
-                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 2</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 7</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：考前衝刺</p>
@@ -1822,7 +1824,7 @@
                             </div>
                         </div>
 
-                        <!-- 2027/04/10 -->
+                        <!-- 2027/04/10 (六) -->
                         <div class="curriculum-week-card border-2 border-gray-100 rounded-[2rem] p-6 shadow-md transition-all duration-300 hover:shadow-xl bg-white" data-month="4" data-start="2027-04-01" data-end="2027-04-10">
                             <div class="flex items-center justify-between border-b border-dashed border-gray-200 pb-3 mb-4">
                                 <span class="text-2xl font-black text-blue-800 flex items-center gap-1.5">
@@ -1838,7 +1840,7 @@
                                 </div>
                                 <div class="bg-[#fff1f2] p-5 rounded-2xl shadow-sm border border-rose-100">
                                     <p class="text-[#991b1b] font-black text-lg mb-1">數學：考前衝刺</p>
-                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 3</p>
+                                    <p class="text-[#e11d48] font-bold text-base">考前衝刺總複習 8</p>
                                 </div>
                                 <div class="bg-[#f0fdf4] p-5 rounded-2xl shadow-sm border border-emerald-100">
                                     <p class="text-[#166534] font-black text-lg mb-1">英文：考前衝刺</p>
@@ -2021,7 +2023,7 @@
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="tel:036560002" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-3xl text-2xl font-black shadow-xl transform active:scale-95 transition flex items-center justify-center gap-3 border-4 border-yellow-300">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-8 h-8 fill-none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                             </svg>
                             竹北校: 03-6560002
@@ -2123,10 +2125,16 @@
         });
     }
 
-    form.addEventListener("submit", handleSubmit);
+    if (form) {
+        form.addEventListener("submit", handleSubmit);
+    }
+
+    // 當前焦點週卡片引用
+    let currentTargetCard = null;
+    let currentTargetMonth = null;
 
     // 月份篩選功能 (升私中特訓班週次)
-    function filterMonth(month) {
+    function filterMonth(month, skipBadgeUpdate = false) {
         const tabs = ['all', '5', '6', '7', '8', '9', '10', '11', '12', '1', '2', '3', '4'];
         tabs.forEach(t => {
             const btn = document.getElementById(`tab-${t}`);
@@ -2154,7 +2162,45 @@
         });
     }
 
-    // 智慧定位與自動過渡
+    // 平滑滾動對焦至目標卡片
+    function scrollToCard(cardElement) {
+        if (!cardElement) return;
+        
+        // 確保卡片處於可見狀態
+        const month = cardElement.getAttribute('data-month');
+        if (month) {
+            filterMonth(month);
+        }
+
+        cardElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+
+        // 觸發高亮加強微動效
+        cardElement.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+        cardElement.style.transform = 'scale(1.03)';
+        setTimeout(() => {
+            cardElement.style.transform = 'scale(1.02)';
+        }, 400);
+    }
+
+    // 家長點擊快捷按鈕：立即對焦本週
+    function jumpToCurrentWeek() {
+        if (currentTargetCard) {
+            scrollToCard(currentTargetCard);
+            const weekText = currentTargetCard.querySelector('.text-2xl')?.innerText.replace('📍 本週課程', '').trim() || '';
+            showToast(`已為您快速聚焦至【${weekText}】課程！`, "info");
+        } else {
+            filterMonth('all');
+            const section = document.getElementById('curriculum-section');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+
+    // SmartSync 智慧排程系統初始化與自動鎖定
     window.onload = function() {
         const today = new Date(); 
         
@@ -2170,11 +2216,12 @@
             dateBadge.innerText = formattedDate;
         }
 
+        const cards = Array.from(document.querySelectorAll('.curriculum-week-card'));
         let matchedCard = null;
-        let matchedMonth = String(today.getMonth() + 1);
+        let matchedMonth = null;
 
-        const cards = document.querySelectorAll('.curriculum-week-card');
-        cards.forEach(card => {
+        // 1. 精準比對日期區間
+        for (const card of cards) {
             const startStr = card.getAttribute('data-start');
             const endStr = card.getAttribute('data-end');
             
@@ -2185,37 +2232,75 @@
                 if (today >= startDate && today <= endDate) {
                     matchedCard = card;
                     matchedMonth = card.getAttribute('data-month');
+                    break;
                 }
             }
-        });
+        }
+
+        // 2. 若今日剛好在開課前或寒暑假區間，智能尋找距離最近的下一週課程
+        if (!matchedCard) {
+            for (const card of cards) {
+                const startStr = card.getAttribute('data-start');
+                if (startStr) {
+                    const startDate = new Date(startStr + "T00:00:00");
+                    if (startDate >= today) {
+                        matchedCard = card;
+                        matchedMonth = card.getAttribute('data-month');
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 3. 若全部課程已結束，預設聚焦最後一週衝刺
+        if (!matchedCard && cards.length > 0) {
+            matchedCard = cards[cards.length - 1];
+            matchedMonth = matchedCard.getAttribute('data-month');
+        }
 
         const helperStatusText = document.getElementById('helper-status-text');
+        const jumpBtn = document.getElementById('jump-to-current-btn');
 
         if (matchedCard) {
+            currentTargetCard = matchedCard;
+            currentTargetMonth = matchedMonth;
+
+            // 切換至對應月份
             filterMonth(matchedMonth);
 
+            // 套用尊榮聚焦光暈與標籤
             matchedCard.classList.add('active-week-highlight');
             const badge = matchedCard.querySelector('.active-badge');
             if (badge) {
                 badge.classList.remove('hidden');
             }
 
-            const weekNumberStr = matchedCard.querySelector('.bg-\\[\\#4a5568\\], .bg-indigo-600, .bg-\\[\\#dc2626\\]')?.innerText || '本週';
+            const weekTag = matchedCard.querySelector('.bg-\\[\\#4a5568\\], .bg-indigo-600, .bg-\\[\\#dc2626\\]')?.innerText || '本週';
             const weekTitleStr = matchedCard.querySelector('.text-2xl')?.innerText.replace('📍 本週課程', '').trim() || '';
 
             if (helperStatusText) {
-                helperStatusText.innerHTML = `已為您精準鎖定 <strong>${matchedMonth}月份</strong> 進度，高亮並平滑對焦至 <strong>${weekNumberStr}：${weekTitleStr}</strong> 課程！`;
+                helperStatusText.innerHTML = `已精準鎖定 <strong>${matchedMonth}月份</strong> 進度，自動高亮並平滑對焦至 <strong>${weekTag}：${weekTitleStr}</strong>！`;
             }
 
-            showToast(`已為您自動切換至 ${matchedMonth} 月份，聚焦【${weekNumberStr}】特訓課程。`, "success");
+            if (jumpBtn) {
+                jumpBtn.classList.remove('hidden');
+            }
 
+            // 平滑對焦滾動（預留頁面渲染防抖動）
+            setTimeout(() => {
+                scrollToCard(matchedCard);
+            }, 600);
+
+            // 二段式校正（防止高解析度圖片加載推移位置）
             setTimeout(() => {
                 matchedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 600);
+            }, 1300);
+
+            showToast(`SmartSync 已為您鎖定 ${matchedMonth} 月份【${weekTag}】特訓課程。`, "success");
         } else {
             filterMonth('all');
             if (helperStatusText) {
-                helperStatusText.innerText = '當前不在特訓班開課期間，已為您顯示所有週次進度。';
+                helperStatusText.innerText = '特訓班課程全覽模式已就緒，歡迎家長點擊各月份查看進度。';
             }
         }
     }
